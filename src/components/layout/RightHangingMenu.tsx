@@ -61,7 +61,7 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       label: 'Inicio / Manifiesto',
       shortLabel: 'Inicio',
       tagline: 'Bóveda General & Métricas',
-      logo: './app_icon.svg',
+      logo: './logos/rap-r-logo.png',
       accentColor: 'text-crt-amber',
       glowColor: 'shadow-amber-500/30',
       borderColor: 'border-crt-amber',
@@ -153,9 +153,9 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
             <div className="px-3 pb-3.5 mb-3 border-b border-surface-border/80 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
-                  src="./app_icon.svg"
+                  src="./logos/rap-r-logo.png"
                   alt="Dossier Rap"
-                  className="w-8 h-8 rounded-lg border border-crt-amber/40 shadow-glow-amber p-0.5 bg-black flex-shrink-0"
+                  className="w-8 h-8 rounded-lg border border-crt-amber/60 shadow-glow-amber p-0.5 bg-black flex-shrink-0 object-contain"
                 />
                 <div>
                   <span className="font-mono text-[10px] text-crt-amber uppercase tracking-wider block font-bold">
@@ -200,12 +200,12 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                       }`}
                     >
                       {item.id === 'dashboard' ? (
-                        /* Isotipo Oficial 'R' de la Web */
-                        <div className="w-full h-full p-2 flex items-center justify-center bg-black select-none">
+                        /* Isotipo Oficial 'R' de la Web (Bold Calligraphy Rap - Gemini Imagen) */
+                        <div className="w-full h-full p-1.5 flex items-center justify-center bg-black select-none rounded-xl">
                           <img
-                            src="./app_icon.svg"
+                            src="./logos/rap-r-logo.png"
                             alt="Dossier Rap Isotipo"
-                            className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(251,191,36,0.6)] group-hover:scale-105 transition-transform"
+                            className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(251,191,36,0.7)] group-hover:scale-110 transition-transform"
                           />
                         </div>
                       ) : item.id === 'rap-beauchef' ? (

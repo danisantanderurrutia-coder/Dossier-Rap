@@ -15,8 +15,26 @@ export const HeroManifesto: React.FC<HeroManifestoProps> = () => {
       <div className="absolute top-12 right-1/4 w-96 h-96 bg-crt-cyan/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Title */}
-        <div className="max-w-4xl mb-8 space-y-3">
+        {/* Brand Emblem & Title */}
+        <div className="max-w-4xl mb-8 space-y-4">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-crt-amber/70 bg-black shadow-[0_0_25px_rgba(251,191,36,0.25)] flex items-center justify-center p-1.5 shrink-0 hover:scale-105 transition-transform">
+              <img
+                src="./logos/rap-r-logo.png"
+                alt="Dossier Rap R Isotipo"
+                className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]"
+              />
+            </div>
+            <div>
+              <span className="font-mono text-xs uppercase tracking-widest text-crt-amber font-extrabold block">
+                Dossier Cultural · Archivo Hip-Hop
+              </span>
+              <span className="font-mono text-xs text-neutral-400">
+                2019–2021 · Competencias de Rap, Cyphers & Resistencia
+              </span>
+            </div>
+          </div>
+
           <h1
             data-text="HIP-HOP COMO RESISTENCIA & CATARSIS"
             className="glitch-text font-mono text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"

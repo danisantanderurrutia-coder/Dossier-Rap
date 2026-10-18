@@ -41,8 +41,8 @@ export const ArchivalHeader: React.FC<ArchivalHeaderProps> = ({
           }}
           className="flex items-center gap-3 text-left group transition-opacity hover:opacity-90"
         >
-          <div className="relative flex items-center justify-center w-8 h-8 rounded-lg overflow-hidden border border-crt-amber/40 shadow-xs group-hover:border-crt-amber group-hover:scale-105 transition-all shrink-0">
-            <img src="./app_icon.svg" alt="Dossier Rap Icon" className="w-full h-full object-cover" />
+          <div className="relative flex items-center justify-center w-9 h-9 rounded-xl overflow-hidden border border-crt-amber/60 bg-black shadow-glow-amber group-hover:border-crt-amber group-hover:scale-105 transition-all shrink-0 p-0.5">
+            <img src="./logos/rap-r-logo.png" alt="Dossier Rap Icon" className="w-full h-full object-contain" />
           </div>
           <div>
             <div className="flex items-center gap-2">
