@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Filter, Layers, Maximize2, Tag, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2, Tag } from 'lucide-react';
 import { galleryData } from '../../data/gallery-data';
 import { PosterItem } from '../../types/archive';
 import { Badge } from '../ui/Badge';
@@ -13,26 +13,20 @@ export const PosterGallery: React.FC<PosterGalleryProps> = ({
   initialCompetitionFilter = 'all',
 }) => {
   const [competitionFilter, setCompetitionFilter] = useState<string>(initialCompetitionFilter);
-  const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
 
-  // Lista de categorías únicas
-  const categories = ['all', ...Array.from(new Set(galleryData.map((p) => p.category)))];
-
-  // Filtrado de afiches
+  // Filtrado estricto: ÚNICAMENTE fotografías en vivo de competidores o liga presencial (cero flyers)
   const filteredPosters: PosterItem[] = galleryData.filter((item) => {
-    const matchComp =
-      competitionFilter === 'all' || item.competitionId === competitionFilter;
-    const matchCat =
-      categoryFilter === 'all' || item.category === categoryFilter;
-    return matchComp && matchCat;
+    const isLivePhoto = item.category === 'Fotografía en Vivo' && item.id !== 'B1k2tdFgYoK';
+    if (!isLivePhoto) return false;
+    return competitionFilter === 'all' || item.competitionId === competitionFilter;
   });
 
-  // Asegurar que selectedIndex no quede fuera de rango al cambiar filtros
+  // Resetear índice al cambiar de filtro
   useEffect(() => {
     setSelectedIndex(0);
-  }, [competitionFilter, categoryFilter]);
+  }, [competitionFilter]);
 
   const currentPoster = filteredPosters[selectedIndex] || filteredPosters[0];
 
@@ -67,71 +61,45 @@ export const PosterGallery: React.FC<PosterGalleryProps> = ({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Badge variant="cyan" size="sm">Bóveda Visual</Badge>
-              <span className="font-mono text-xs text-neutral-400">49 Piezas Gráficas Originales</span>
+              <Badge variant="cyan" size="sm">Registro Presencial</Badge>
+              <span className="font-mono text-xs text-neutral-400">{filteredPosters.length} Fotografías en Vivo</span>
             </div>
             <h2
-              data-text="ARCHIVO GRÁFICO & AFICHES DE CULTO"
+              data-text="FOTOGRAFÍA EN VIVO & COMPETIDORES"
               className="glitch-text font-mono text-2xl sm:text-3xl font-extrabold text-white uppercase tracking-tight"
             >
-              ARCHIVO GRÁFICO & AFICHES DE CULTO
+              FOTOGRAFÍA EN VIVO & COMPETIDORES
             </h2>
             <p className="crt-subtext text-xs sm:text-sm text-neutral-400 font-mono mt-1">
-              Carrusel editorial con registro histórico, fixtures, convocatorias y fases (2019–2021).
+              Registro directo en el anfiteatro de Beauchef: emcees al micrófono, cyphers en círculo, jurados y batallas en vivo.
             </p>
           </div>
 
           <div className="font-mono text-xs text-neutral-400 bg-surface px-3 py-1.5 rounded-lg border border-surface-border">
-            PIEZA <strong className="text-crt-amber">{selectedIndex + 1}</strong> DE {filteredPosters.length}
+            FOTO <strong className="text-crt-amber">{selectedIndex + 1}</strong> DE {filteredPosters.length}
           </div>
         </div>
 
-        {/* Filters Panel */}
-        <div className="bg-surface/80 border border-surface-border rounded-xl p-4 space-y-3">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-            <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-widest flex items-center gap-1.5 flex-shrink-0">
-              <Filter className="w-3 h-3 text-crt-amber" /> LIGA:
-            </span>
-            {[
-              { id: 'all', label: 'Todas las Producciones' },
-              { id: 'rap-beauchef', label: 'Rap Beauchef (Presencial)' },
-              { id: 'duenas-de-la-voz', label: 'Dueñas de la Voz' },
-              { id: 'discord-rap-beauchef', label: 'Discord Rap Beauchef' },
-              { id: 'cuarentena-rap', label: 'Cuarentena Rap' },
-              { id: 'rap-libre', label: 'Rap Libre' },
-            ].map((comp) => (
-              <button
-                key={comp.id}
-                onClick={() => setCompetitionFilter(comp.id)}
-                className={`px-3 py-1 rounded font-mono text-xs transition-colors flex-shrink-0 ${
-                  competitionFilter === comp.id
-                    ? 'bg-crt-amber text-neutral-950 font-bold'
-                    : 'bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800'
-                }`}
-              >
-                {comp.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-1 border-t border-surface-border/50">
-            <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-widest flex items-center gap-1.5 flex-shrink-0">
-              <Layers className="w-3 h-3 text-crt-cyan" /> TEMA:
-            </span>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setCategoryFilter(cat)}
-                className={`px-2.5 py-0.5 rounded font-mono text-[11px] transition-colors flex-shrink-0 ${
-                  categoryFilter === cat
-                    ? 'bg-neutral-200 text-neutral-950 font-bold'
-                    : 'bg-neutral-900/60 text-neutral-400 hover:text-white border border-neutral-800'
-                }`}
-              >
-                {cat === 'all' ? 'Todos los temas' : cat}
-              </button>
-            ))}
-          </div>
+        {/* Streamlined Live Photo Filter Bar */}
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+          {[
+            { id: 'all', label: 'Todas las Fotos' },
+            { id: 'rap-beauchef', label: 'Rap Beauchef (Anfiteatro)' },
+            { id: 'duenas-de-la-voz', label: 'Dueñas de la Voz' },
+            { id: 'cuarentena-rap', label: 'Breaking' },
+          ].map((comp) => (
+            <button
+              key={comp.id}
+              onClick={() => setCompetitionFilter(comp.id)}
+              className={`px-3 py-1.5 rounded-lg font-mono text-xs transition-colors flex-shrink-0 cursor-pointer ${
+                competitionFilter === comp.id
+                  ? 'bg-crt-amber text-neutral-950 font-bold shadow-xs'
+                  : 'bg-neutral-900/80 text-neutral-400 hover:text-white border border-neutral-800'
+              }`}
+            >
+              {comp.label}
+            </button>
+          ))}
         </div>
 
         {/* Split Curatorial Gallery: Left Carousel + Right Description */}
@@ -243,31 +211,12 @@ export const PosterGallery: React.FC<PosterGalleryProps> = ({
               </div>
 
               {/* Detailed Description */}
-              <div className="border-t border-surface-border/60 pt-4 space-y-3">
+              <div className="border-t border-surface-border/60 pt-4 space-y-2">
                 <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-widest block">
-                  Contexto Histórico & Curaduría:
+                  Registro de la Batalla:
                 </span>
                 <p className="text-sm text-neutral-300 leading-relaxed font-sans">
-                  {currentPoster.desc || 'Pieza gráfica original de difusión, convocatoria y registro visual perteneciente al archivo de competencias dirigidas por Daniel Santander.'}
-                </p>
-              </div>
-
-              {/* Extra Archival Insight Card */}
-              <div className="bg-neutral-950/70 border border-surface-border/80 rounded-xl p-4 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-mono text-neutral-300">
-                  <Sparkles className="w-3.5 h-3.5 text-crt-amber" />
-                  <span className="font-bold text-white">Notas de Producción</span>
-                </div>
-                <p className="text-xs text-neutral-400 leading-relaxed font-sans">
-                  {currentPoster.competitionId === 'cuarentena-rap' && (
-                    'Pieza diseñada para el certamen digital en confinamiento, comunicando la atmósfera ritual de la muerte simbólica y catarsis colectiva a través de los canales de la liga.'
-                  )}
-                  {currentPoster.competitionId === 'rap-beauchef' && (
-                    'Registro gráfico de los encuentros universitarios en el anfiteatro de Beauchef y las convocatorias del certamen femenino "Dueñas de la Voz".'
-                  )}
-                  {currentPoster.competitionId === 'rap-libre' && (
-                    'Diseño orientado a la convocatoria callejera popular, articulando campañas de acopio directo de víveres durante emergencias y movilización social.'
-                  )}
+                  {currentPoster.desc}
                 </p>
               </div>
 

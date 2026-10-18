@@ -43,8 +43,25 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
   activeTab,
   onSelectTab,
 }) => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('dossier_rap_menu_expanded');
+      if (saved !== null) return saved === 'true';
+      return window.innerWidth >= 1280; // Expand by default on desktop for optimal visibility
+    }
+    return false;
+  });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  const toggleExpanded = () => {
+    setIsExpanded((prev) => {
+      const next = !prev;
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('dossier_rap_menu_expanded', String(next));
+      }
+      return next;
+    });
+  };
 
   const menuItems: MenuItem[] = [
     {
@@ -149,45 +166,46 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
         
         {/* Toggle Expansion Tab */}
         <button
-          onClick={() => setIsExpanded(!isExpanded)}
+          onClick={toggleExpanded}
           title={isExpanded ? 'Colapsar menú lateral' : 'Expandir menú lateral'}
-          className="bg-neutral-900/95 hover:bg-neutral-800 text-neutral-300 hover:text-white border-y border-l border-surface-border hover:border-neutral-500 p-2 rounded-l-xl shadow-2xl backdrop-blur-md transition-all flex flex-col items-center justify-center gap-1.5 focus:outline-none"
+          className="bg-neutral-900/98 hover:bg-neutral-850 text-neutral-200 hover:text-white border-y-2 border-l-2 border-crt-amber/50 hover:border-crt-amber px-3 py-6 rounded-l-2xl shadow-2xl backdrop-blur-md transition-all flex flex-col items-center justify-center gap-2.5 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-crt-amber"
         >
           {isExpanded ? (
-            <ChevronRight className="w-4 h-4 text-crt-amber animate-pulse" />
+            <ChevronRight className="w-6 h-6 text-crt-amber transition-transform group-hover:scale-125" />
           ) : (
-            <ChevronLeft className="w-4 h-4 text-crt-amber animate-pulse" />
+            <ChevronLeft className="w-6 h-6 text-crt-amber transition-transform group-hover:scale-125 animate-pulse" />
           )}
-          <span className="[writing-mode:vertical-rl] rotate-180 font-mono text-[9px] uppercase tracking-widest text-neutral-400 font-bold py-1">
-            {isExpanded ? 'Cerrar' : 'Expedientes'}
+          <span className="[writing-mode:vertical-rl] rotate-180 font-mono text-xs sm:text-sm uppercase tracking-widest text-neutral-200 group-hover:text-crt-amber font-extrabold py-2 transition-colors">
+            {isExpanded ? 'Cerrar Menú' : 'Expedientes'}
           </span>
+          <span className="w-2 h-2 rounded-full bg-crt-amber animate-ping" />
         </button>
 
         {/* Main Hanging Body */}
         <nav
-          className={`bg-neutral-950/95 border-y border-l border-surface-border/80 backdrop-blur-xl shadow-2xl transition-all duration-300 rounded-l-2xl py-3 px-2 ${
-            isExpanded ? 'w-72 sm:w-80' : 'w-16'
+          className={`bg-neutral-950/98 border-y-2 border-l-2 border-surface-border backdrop-blur-2xl shadow-2xl transition-all duration-300 rounded-l-2xl py-4 px-3 ${
+            isExpanded ? 'w-[360px] sm:w-[440px] lg:w-[480px]' : 'w-24 sm:w-28'
           }`}
         >
           {/* Header on expanded */}
           {isExpanded && (
-            <div className="px-3 pb-3 mb-2 border-b border-surface-border/60 flex items-center justify-between">
+            <div className="px-3 pb-3.5 mb-3 border-b border-surface-border/80 flex items-center justify-between">
               <div>
-                <span className="font-mono text-[10px] text-crt-amber uppercase tracking-wider block font-bold">
+                <span className="font-mono text-xs text-crt-amber uppercase tracking-wider block font-bold">
                   Navegación de Archivo
                 </span>
-                <span className="font-mono text-xs text-white font-bold">
+                <span className="font-mono text-base text-white font-bold">
                   Secciones & Expedientes
                 </span>
               </div>
-              <span className="font-mono text-[10px] bg-neutral-900 text-neutral-400 px-2 py-0.5 rounded border border-neutral-800">
+              <span className="font-mono text-xs bg-neutral-900 text-crt-amber px-3 py-1 rounded-md border border-neutral-800 font-bold">
                 7 Módulos
               </span>
             </div>
           )}
 
           {/* List of sections */}
-          <div className="space-y-2">
+          <div className="space-y-3">
             {menuItems.map((item) => {
               const isActive = activeTab === item.id;
               const isHovered = hoveredId === item.id;
@@ -199,17 +217,17 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                     onClick={() => onSelectTab(item.id)}
                     onMouseEnter={() => setHoveredId(item.id)}
                     onMouseLeave={() => setHoveredId(null)}
-                    className={`w-full flex items-center gap-3 p-1.5 rounded-xl transition-all text-left group ${
+                    className={`w-full flex items-center gap-4 p-2.5 rounded-2xl transition-all text-left group cursor-pointer ${
                       isActive
-                        ? `bg-neutral-900 border ${item.borderColor} ${item.glowColor} shadow-lg`
-                        : 'hover:bg-neutral-900/60 border border-transparent hover:border-neutral-800'
+                        ? `bg-neutral-900 border-2 ${item.borderColor} ${item.glowColor} shadow-xl ring-2 ring-white/10`
+                        : 'hover:bg-neutral-900/90 border-2 border-transparent hover:border-neutral-800'
                     }`}
                   >
-                    {/* Logo Emblem Thumbnail */}
+                    {/* Logo Emblem Thumbnail (Enlarged) */}
                     <div
-                      className={`relative w-11 h-11 rounded-lg overflow-hidden flex-shrink-0 border bg-neutral-900 flex items-center justify-center transition-all ${
+                      className={`relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden flex-shrink-0 border-2 bg-neutral-900 flex items-center justify-center transition-all ${
                         isActive
-                          ? `${item.borderColor} ring-2 ring-white/10 scale-105`
+                          ? `${item.borderColor} ring-2 ring-white/30 scale-105 shadow-lg`
                           : 'border-neutral-800 group-hover:border-neutral-600'
                       }`}
                     >
@@ -217,37 +235,36 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                         src={item.logo}
                         alt={item.shortLabel}
                         onError={(e) => {
-                          // Fallback to Icon if image is missing
                           (e.target as HTMLElement).style.display = 'none';
                         }}
                         className="w-full h-full object-cover transition-transform group-hover:scale-110"
                       />
-                      <Icon className={`w-5 h-5 absolute pointer-events-none opacity-20 ${item.accentColor}`} />
+                      <Icon className={`w-8 h-8 absolute pointer-events-none opacity-85 ${item.accentColor}`} />
                       
                       {/* Active indicator dot */}
                       {isActive && (
-                        <span className="absolute bottom-1 right-1 w-2 h-2 rounded-full bg-crt-amber shadow-glow-amber animate-pulse" />
+                        <span className="absolute bottom-1.5 right-1.5 w-3 h-3 rounded-full bg-crt-amber shadow-glow-amber animate-pulse" />
                       )}
                     </div>
 
                     {/* Expanded details */}
                     {isExpanded && (
                       <div className="flex-1 min-w-0 pr-1">
-                        <div className="flex items-center justify-between gap-1">
+                        <div className="flex items-center justify-between gap-2">
                           <span
-                            className={`font-mono text-xs font-bold truncate transition-colors ${
-                              isActive ? item.accentColor : 'text-neutral-200 group-hover:text-white'
+                            className={`font-mono text-sm sm:text-base font-bold truncate transition-colors ${
+                              isActive ? item.accentColor : 'text-neutral-100 group-hover:text-white'
                             }`}
                           >
                             {item.label}
                           </span>
                           {item.badge && (
-                            <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded border uppercase tracking-wider flex-shrink-0 ${item.badgeColor}`}>
+                            <span className={`text-xs font-mono px-2.5 py-0.5 rounded-md border uppercase tracking-wider font-semibold flex-shrink-0 ${item.badgeColor}`}>
                               {item.badge}
                             </span>
                           )}
                         </div>
-                        <p className="text-[10px] text-neutral-400 truncate font-sans">
+                        <p className="text-xs sm:text-sm text-neutral-300 font-sans mt-0.5 line-clamp-1">
                           {item.tagline}
                         </p>
                       </div>
@@ -256,19 +273,19 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
 
                   {/* Compact Hover Tooltip (when collapsed) */}
                   {!isExpanded && isHovered && (
-                    <div className="absolute right-16 top-1/2 -translate-y-1/2 z-50 pointer-events-none">
-                      <div className="bg-neutral-950/95 border border-surface-border text-white text-xs px-3 py-2 rounded-xl shadow-2xl backdrop-blur-md whitespace-nowrap min-w-44">
-                        <div className="flex items-center justify-between gap-2">
-                          <span className={`font-mono font-bold text-xs ${item.accentColor}`}>
+                    <div className="absolute right-28 sm:right-32 top-1/2 -translate-y-1/2 z-50 pointer-events-none">
+                      <div className="bg-neutral-950/98 border border-neutral-700 text-white p-4 rounded-2xl shadow-2xl backdrop-blur-xl whitespace-nowrap min-w-64">
+                        <div className="flex items-center justify-between gap-4">
+                          <span className={`font-mono font-bold text-base ${item.accentColor}`}>
                             {item.label}
                           </span>
                           {item.badge && (
-                            <span className={`text-[8px] font-mono px-1 py-0.5 rounded border uppercase ${item.badgeColor}`}>
+                            <span className={`text-xs font-mono px-2 py-0.5 rounded border uppercase font-semibold ${item.badgeColor}`}>
                               {item.badge}
                             </span>
                           )}
                         </div>
-                        <div className="text-[10px] text-neutral-400 font-sans mt-0.5">
+                        <div className="text-xs sm:text-sm text-neutral-300 font-sans mt-1">
                           {item.tagline}
                         </div>
                       </div>
@@ -282,7 +299,7 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
 
           {/* Bottom quick indicator */}
           {isExpanded && (
-            <div className="mt-3 pt-2.5 border-t border-surface-border/60 text-center font-mono text-[9px] text-neutral-500">
+            <div className="mt-4 pt-3 border-t border-surface-border/80 text-center font-mono text-xs text-crt-amber font-bold tracking-wider">
               CLIC PARA ABRIR EXPEDIENTE
             </div>
           )}

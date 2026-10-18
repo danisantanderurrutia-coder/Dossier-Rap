@@ -12,7 +12,6 @@ import { LasEscritasSection } from './components/sections/LasEscritasSection';
 import { ExecutiveCaseStudy } from './components/sections/ExecutiveCaseStudy';
 import { PosterGallery } from './components/media/PosterGallery';
 import { YoutubeVideo } from './types/archive';
-import { Layers } from 'lucide-react';
 
 export const App: React.FC = () => {
   const [activeMode, setActiveMode] = useState<'dossier' | 'executive'>('dossier');
@@ -64,37 +63,6 @@ export const App: React.FC = () => {
               <div className="space-y-12">
                 {/* Hero Manifesto & Impact Metrics */}
                 <HeroManifesto />
-
-                {/* Guía Curatorial de Navegación Lateral */}
-                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                  <div className="bg-gradient-to-r from-surface via-[#13171e] to-surface border border-surface-border rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-                    <div className="space-y-2 max-w-2xl">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-crt-amber animate-ping" />
-                        <span className="font-mono text-xs uppercase tracking-widest text-crt-amber font-bold">
-                          Navegación por Expedientes
-                        </span>
-                      </div>
-                      <h3 className="font-mono text-xl sm:text-2xl font-bold text-white">
-                        Explora los Archivos desde el Menú Lateral Colgante
-                      </h3>
-                      <p className="text-xs sm:text-sm text-neutral-300 font-sans leading-relaxed">
-                        Accede directamente a los expedientes monográficos: 
-                        <strong> Rap Beauchef (Presencial)</strong>, 
-                        <strong> Dueñas de la Voz</strong>, 
-                        <strong> Discord Rap Beauchef</strong>, 
-                        <strong> Cuarentena Rap</strong>, 
-                        <strong> Rap Libre</strong> y 
-                        <strong> Las Escritas</strong>, utilizando la barra lateral interactiva situada a la derecha de la pantalla.
-                      </p>
-                    </div>
-
-                    <div className="flex-shrink-0 flex items-center gap-2 font-mono text-xs bg-neutral-900 border border-neutral-800 text-crt-amber px-4 py-2.5 rounded-xl shadow-inner">
-                      <Layers className="w-4 h-4 text-crt-amber" />
-                      <span>Menú lateral derecho activo &rarr;</span>
-                    </div>
-                  </div>
-                </section>
 
                 {/* Bóveda Visual y Afiches de Culto */}
                 <PosterGallery initialCompetitionFilter="all" />
