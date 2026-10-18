@@ -18,11 +18,11 @@ export const HeroManifesto: React.FC<HeroManifestoProps> = () => {
         {/* Brand Emblem & Title */}
         <div className="max-w-4xl mb-8 space-y-4">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-crt-amber/70 bg-black shadow-[0_0_25px_rgba(251,191,36,0.25)] flex items-center justify-center p-1.5 shrink-0 hover:scale-105 transition-transform">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-crt-amber/70 bg-black shadow-[0_0_25px_rgba(251,191,36,0.25)] flex items-center justify-center shrink-0 hover:scale-105 transition-transform">
               <img
                 src="./logos/rap-r-logo.png"
                 alt="Dossier Rap R Isotipo"
-                className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]"
+                className="w-full h-full object-cover filter drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]"
               />
             </div>
             <div>

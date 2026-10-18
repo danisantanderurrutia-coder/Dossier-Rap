@@ -155,7 +155,7 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                 <img
                   src="./logos/rap-r-logo.png"
                   alt="Dossier Rap"
-                  className="w-8 h-8 rounded-lg border border-crt-amber/60 shadow-glow-amber p-0.5 bg-black flex-shrink-0 object-contain"
+                  className="w-8 h-8 rounded-lg border border-crt-amber/60 shadow-glow-amber bg-black flex-shrink-0 object-cover overflow-hidden"
                 />
                 <div>
                   <span className="font-mono text-[10px] text-crt-amber uppercase tracking-wider block font-bold">
@@ -201,11 +201,11 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                     >
                       {item.id === 'dashboard' ? (
                         /* Isotipo Oficial 'R' de la Web (Bold Calligraphy Rap - Gemini Imagen) */
-                        <div className="w-full h-full p-1.5 flex items-center justify-center bg-black select-none rounded-xl">
+                        <div className="w-full h-full flex items-center justify-center bg-black select-none rounded-xl overflow-hidden">
                           <img
                             src="./logos/rap-r-logo.png"
                             alt="Dossier Rap Isotipo"
-                            className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(251,191,36,0.7)] group-hover:scale-110 transition-transform"
+                            className="w-full h-full object-cover filter drop-shadow-[0_0_10px_rgba(251,191,36,0.7)] group-hover:scale-110 transition-transform"
                           />
                         </div>
                       ) : item.id === 'rap-beauchef' ? (
