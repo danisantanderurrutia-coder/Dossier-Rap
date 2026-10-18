@@ -50,8 +50,8 @@ export const RapLibreSection: React.FC<RapLibreSectionProps> = ({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-surface-border/60">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <Badge variant="red">Hito 03 // 2019–2020</Badge>
-              <span className="font-mono text-xs text-neutral-400">Plazas Urbanas & Solidaridad Popular</span>
+              <Badge variant="red">Versión Plaza & Solidaridad · Rap Beauchef</Badge>
+              <span className="font-mono text-xs text-neutral-400">Plazas Urbanas & Acopio Popular</span>
             </div>
             <h2
               data-text="RAP LIBRE"

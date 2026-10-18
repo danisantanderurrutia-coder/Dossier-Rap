@@ -26,10 +26,10 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
   const sections: SectionCardItem[] = [
     {
       id: 'rap-beauchef',
-      title: 'Rap Beauchef',
+      title: 'Rap Beauchef (Matriz Fundacional)',
       period: '2019–2021',
       type: 'Presencial / Anfiteatro FCFM',
-      description: 'Batallas en vivo en anfiteatro universitario, cyphers en círculo, breakers y jurados bajo enredaderas históricas.',
+      description: 'Liga matriz universitaria nacida en el anfiteatro de la FCFM (U. de Chile). Círculo fundacional del que emergen las versiones territoriales (Rap Libre) y literarias (Las Escritas).',
       logo: './logos/rap-beauchef.jpg',
       accentColor: 'text-crt-cyan',
       borderColor: 'border-cyan-500/30',
@@ -37,14 +37,14 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       glowColor: 'group-hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]',
       badgeBg: 'bg-cyan-500/10 border-cyan-500/30',
       badgeText: 'text-cyan-300',
-      highlights: ['Anfiteatro FCFM', 'Batallas en Vivo', 'Cultura Hip-Hop'],
+      highlights: ['Anfiteatro FCFM', 'Liga Matriz', 'Cultura Hip-Hop'],
     },
     {
       id: 'duenas-de-la-voz',
       title: 'Dueñas de la Voz',
       period: '2019–2020',
       type: 'Soberanía Lírica Femenina',
-      description: 'Primer encuentro y certamen feminista universitario con conversatorios temáticos, sororidad lírica y cyphers.',
+      description: 'Primer encuentro y certamen feminista universitario con conversatorios temáticos, sororidad lírica y cyphers en vivo.',
       logo: './logos/duenas-de-la-voz.jpg',
       accentColor: 'text-fuchsia-400',
       borderColor: 'border-fuchsia-500/30',
@@ -88,8 +88,8 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       id: 'rap-libre',
       title: 'Rap Libre',
       period: '2019–2020',
-      type: 'Espacio Público & Solidaridad',
-      description: 'Reapropiación de plazas públicas urbanas, autogestión territorial y acopio directo de víveres durante crisis.',
+      type: 'Versión Plaza (Rap Beauchef)',
+      description: 'Extensión barrial y callejera de Rap Beauchef: reapropiación de plazas públicas urbanas, autogestión territorial y acopio directo de víveres durante crisis social.',
       logo: './logos/rap-libre.jpg',
       accentColor: 'text-rose-400',
       borderColor: 'border-rose-500/30',
@@ -97,14 +97,14 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       glowColor: 'group-hover:shadow-[0_0_30px_rgba(244,63,94,0.15)]',
       badgeBg: 'bg-rose-500/10 border-rose-500/30',
       badgeText: 'text-rose-300',
-      highlights: ['Plazas y Parques', 'Acopio de Víveres', 'Territorio'],
+      highlights: ['Versión Rap Beauchef', 'Plazas Urbanas', 'Acopio de Víveres'],
     },
     {
       id: 'las-escritas',
-      title: 'Batallas Escritas',
-      period: '2020–2021',
-      type: 'Duelos Poéticos & Rúbricas',
-      description: 'Duelos líricos a capella preparados sin improvisación, evaluados con rúbricas técnicas y de métrica poética.',
+      title: 'Las Escritas',
+      period: '2019–2021',
+      type: 'Versión Escrita (Rap Beauchef)',
+      description: 'Modalidad de rimas preconcebidas de Rap Beauchef nacida en el anfiteatro: duelos líricos a capella sin improvisación, evaluados bajo rúbrica métrica y poética.',
       logo: './logos/las-escritas.jpg',
       accentColor: 'text-amber-300',
       borderColor: 'border-amber-400/30',
@@ -112,7 +112,7 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       glowColor: 'group-hover:shadow-[0_0_30px_rgba(252,211,77,0.15)]',
       badgeBg: 'bg-amber-400/10 border-amber-400/30',
       badgeText: 'text-amber-300',
-      highlights: ['A Capella', 'Rúbricas Técnicas', 'Métrica Pura'],
+      highlights: ['Versión Rap Beauchef', 'A Capella', 'Rúbricas Técnicas'],
     },
   ];
 
@@ -147,29 +147,29 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
                 <div className="flex items-start justify-between gap-3 mb-4">
                   <div className="relative w-14 h-14 rounded-xl overflow-hidden border border-neutral-700 bg-neutral-900 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-md">
                     {section.id === 'rap-libre' ? (
-                      /* Logo tipográfico exclusivo para Rap Libre */
+                      /* Logo tipográfico exclusivo: Versión Plaza (Rap Beauchef) */
                       <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#2b080f] via-neutral-950 to-black p-1 text-center select-none">
-                        <span className="font-mono text-[8px] tracking-[0.25em] text-rose-500 uppercase font-black leading-none">
-                          RAP
+                        <span className="font-mono text-[6.5px] tracking-[0.2em] text-rose-400 uppercase font-bold leading-none">
+                          BEAUCHEF
                         </span>
-                        <span className="font-mono text-[13px] font-black tracking-tight text-white uppercase leading-none drop-shadow-[0_2px_8px_rgba(244,63,94,0.7)] group-hover:scale-105 transition-transform my-0.5">
-                          LIBRE
+                        <span className="font-mono text-[12px] font-black tracking-tight text-white uppercase leading-none drop-shadow-[0_2px_8px_rgba(244,63,94,0.7)] group-hover:scale-105 transition-transform my-0.5">
+                          RAP LIBRE
                         </span>
-                        <span className="font-mono text-[6.5px] tracking-widest text-rose-300/80 uppercase font-bold leading-none">
-                          PLAZA
+                        <span className="font-mono text-[6px] tracking-widest text-rose-300/80 uppercase font-semibold leading-none">
+                          VERSIÓN PLAZA
                         </span>
                       </div>
                     ) : section.id === 'las-escritas' ? (
-                      /* Logo tipográfico exclusivo para Batallas Escritas */
+                      /* Logo tipográfico exclusivo: Versión Escrita (Rap Beauchef) */
                       <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#271404] via-neutral-950 to-black p-1 text-center select-none">
-                        <span className="font-mono text-[7px] tracking-[0.2em] text-amber-400 uppercase font-black leading-none">
-                          BATALLAS
+                        <span className="font-mono text-[6.5px] tracking-[0.2em] text-amber-400 uppercase font-bold leading-none">
+                          BEAUCHEF
                         </span>
-                        <span className="font-serif italic font-black text-[11px] tracking-wide text-amber-200 uppercase leading-none drop-shadow-[0_2px_8px_rgba(251,191,36,0.6)] group-hover:scale-105 transition-transform my-0.5">
-                          ESCRITAS
+                        <span className="font-serif italic font-black text-[10.5px] tracking-wide text-amber-200 uppercase leading-none drop-shadow-[0_2px_8px_rgba(251,191,36,0.6)] group-hover:scale-105 transition-transform my-0.5">
+                          LAS ESCRITAS
                         </span>
-                        <span className="font-mono text-[6.5px] tracking-widest text-neutral-400 uppercase font-bold leading-none">
-                          LÍRICA
+                        <span className="font-mono text-[6px] tracking-widest text-neutral-400 uppercase font-semibold leading-none">
+                          DUELO POÉTICO
                         </span>
                       </div>
                     ) : (

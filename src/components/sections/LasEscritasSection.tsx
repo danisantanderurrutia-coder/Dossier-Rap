@@ -68,8 +68,8 @@ export const LasEscritasSection: React.FC<LasEscritasSectionProps> = ({
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-surface-border/60">
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-3">
-              <Badge variant="amber">Formato Poético & Literario // 2019–2021</Badge>
-              <span className="font-mono text-xs text-neutral-400">Batallas de Barras Preparadas</span>
+              <Badge variant="amber">Versión Duelos Poéticos · Rap Beauchef</Badge>
+              <span className="font-mono text-xs text-neutral-400">Barras Escritas & Rúbricas</span>
               
               <a
                 href="https://www.instagram.com/rap.beauchef/"

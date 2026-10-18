@@ -3,12 +3,10 @@ import {
   Copy,
   Check,
   ExternalLink,
-  ShieldCheck,
   Sparkles,
   Radio,
   Users,
   Scale,
-  ArrowUpRight,
   Terminal,
 } from 'lucide-react';
 
@@ -54,8 +52,8 @@ export const ExecutiveCaseStudy: React.FC = () => {
         "Archivo de 160 publicaciones oficiales con dirección de arte y gráfica propia"
       ],
       metrics: ["160 Entregas Documentadas", "5 Países Federados", "4 Elementos 2H"],
-      heroImage: "/covers/instagram/CIOORNBA_Pg.jpg",
-      secondaryImage: "/covers/instagram/CGjb8FRAGms.jpg",
+      heroImage: "./covers/instagram/CIOORNBA_Pg.jpg",
+      secondaryImage: "./covers/instagram/CGjb8FRAGms.jpg",
       quote: "El hip-hop no como mero espectáculo, sino como dispositivo ritual de sanación colectiva y memoria viva en tiempos de aislamiento.",
       tagBg: "bg-neutral-900 text-white",
     },
@@ -72,8 +70,8 @@ export const ExecutiveCaseStudy: React.FC = () => {
         "Servidor Discord internacional con canales VoIP Opus a 64kbps sin desfase"
       ],
       metrics: ["+12,400 Miembros Discord", "Canales Opus 64kbps", "Final Histórica QUEENA"],
-      heroImage: "/covers/instagram/B1k2tdFgYoK.jpg",
-      secondaryImage: "/covers/instagram/CBV5veZFbFw.jpg",
+      heroImage: "./covers/instagram/B1k2tdFgYoK.jpg",
+      secondaryImage: "./covers/instagram/CBV5veZFbFw.jpg",
       quote: "Cuando el mundo está en silencio, hasta una sola voz en el anfiteatro se vuelve un trueno.",
       tagBg: "bg-[#9d174d] text-white",
     },
@@ -90,8 +88,8 @@ export const ExecutiveCaseStudy: React.FC = () => {
         "100% autogestión ética, horizontal y sin financiamiento corporativo"
       ],
       metrics: ["Plazas de Santiago", "100% Solidaridad Popular", "Cero Lucro Corporativo"],
-      heroImage: "/covers/instagram/B46IqYzHJkB.jpg",
-      secondaryImage: "/covers/instagram/B42bAbtnntp.jpg",
+      heroImage: "./covers/instagram/B46IqYzHJkB.jpg",
+      secondaryImage: "./covers/instagram/B42bAbtnntp.jpg",
       quote: "Conquistar el espacio público no para vender marcas, sino para abrigar y alimentar la resistencia comunitaria.",
       tagBg: "bg-[#991b1b] text-white",
     },
@@ -151,14 +149,13 @@ export const ExecutiveCaseStudy: React.FC = () => {
 
   const handleCopyMarkdownLetter = () => {
     const text = `# Daniel S. Santander Urrutia — Resumen Ejecutivo & Dossier Cultural
-**Roles:** Director Creativo · Productor Ejecutivo · Arquitecto de Comunidades · Diseñador de Rúbricas
+**Roles:** Director Creativo · Productor Ejecutivo · Curador de Arte · Arquitecto de Comunidades
 **Periodo de Operaciones:** 2019 – 2021 | Santiago de Chile
-**Fuente Primaria Verificada:** https://www.instagram.com/cuarentenarap/ (160 publicaciones · Acreditación formal en biografía: @dani.santanderurrutia)
 
 ---
 
-## Declaración Ejecutiva (Executive Statement)
-Mi trayectoria en producción cultural y liderazgo se fundamenta en un principio operativo: transformar momentos de crisis extrema —como el confinamiento pandémico por COVID-19 o el estallido social de 2019— en dispositivos colectivos de resiliencia comunitaria, rigor de ingeniería y alta calidad artística.
+## Declaración de Autor & Producción
+Producción artística con rigor de ingeniería y alta calidad artística. Producción, Dirección y Gráficas por Daniel Santander Urrutia, autor intelectual, curador de arte y ejecución técnica.
 
 A lo largo de tres producciones emblemáticas entre 2019 y 2021:
 1. **Cuarentena Rap (2020–2021):** Diseñé y dirigí una liga conceptual multiplataforma estructurada en 8 portales dimensionales (Muerte, Tumbas, Karmas y Liberación), integrando los 4 elementos del hip-hop (MCing, Breaking, Beatmaking exclusivo y Beatboxing) y federando una red de jurados y plazas en Chile, Argentina, Colombia, Perú y México bajo rúbricas decimales transparentes.
@@ -198,20 +195,24 @@ Contacto / Archivo Web: Disponible en el Dossier Interactivo de Competencias de 
         {/* ========================================================================= */}
         <div className="border-b border-neutral-300 pb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           
-          <div className="space-y-4 max-w-2xl">
+          <div className="space-y-4 max-w-3xl">
             <div className="flex items-center gap-2">
               <span className="font-mono text-[10px] tracking-widest uppercase bg-neutral-900 text-white px-2.5 py-0.5 rounded font-bold">
                 CASO DE ESTUDIO · DIRECCIÓN & PRODUCCIÓN EJECUTIVA
               </span>
-              <span className="font-mono text-xs text-neutral-500">TRIENIO 2019 — 2021</span>
+              <span className="font-mono text-xs text-neutral-500 font-semibold">TRIENIO 2019 — 2021</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-neutral-950 font-serif leading-none">
               DANIEL S. SANTANDER URRUTIA
             </h1>
 
-            <p className="text-base sm:text-lg text-neutral-600 font-sans font-light leading-relaxed">
-              Director Creativo · Productor Ejecutivo · Arquitecto de Comunidades · Diseñador de Rúbricas
+            <p className="text-sm sm:text-base font-mono text-neutral-500 uppercase tracking-wider font-semibold">
+              Director Creativo · Productor Ejecutivo · Curador de Arte · Arquitecto de Comunidades
+            </p>
+
+            <p className="text-base sm:text-lg text-neutral-800 font-sans leading-relaxed pt-1">
+              Producción artística con rigor de ingeniería y alta calidad artística. Producción, Dirección y Gráficas por Daniel Santander Urrutia, autor intelectual, curador de arte y ejecución técnica.
             </p>
           </div>
 
@@ -237,20 +238,11 @@ Contacto / Archivo Web: Disponible en el Dossier Interactivo de Competencias de 
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. DECLARACIÓN DE OBRA & TELEMETRÍA DE IMPACTO                            */}
+        {/* 2. TELEMETRÍA DE IMPACTO                                                  */}
         {/* ========================================================================= */}
         <div className="space-y-8">
-          <div className="max-w-3xl space-y-3">
-            <span className="font-mono text-xs uppercase tracking-widest text-neutral-500 block font-bold">
-              DECLARACIÓN OPERATIVA
-            </span>
-            <p className="text-2xl sm:text-3xl font-serif text-neutral-900 leading-snug tracking-tight">
-              &ldquo;Transformar la crisis extrema —desde el confinamiento sanitario hasta la agitación social— en <span className="underline decoration-neutral-400 underline-offset-4 font-semibold">dispositivos colectivos de resiliencia comunitaria</span>, rigor de ingeniería y alta calidad artística.&rdquo;
-            </p>
-          </div>
-
           {/* Scale Telemetry: 4 Clean Minimal Strips */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-neutral-300">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-2">
             <div>
               <div className="font-mono text-3xl sm:text-4xl font-extrabold text-neutral-950">
                 +12.4k
@@ -299,41 +291,6 @@ Contacto / Archivo Web: Disponible en el Dossier Interactivo de Competencias de 
               </p>
             </div>
           </div>
-
-          {/* Canonical Verification Banner: Primary Source */}
-          <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl text-white">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <div className="space-y-1.5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                    FUENTE PRIMARIA VERIFICADA
-                  </span>
-                  <span className="font-mono text-xs text-neutral-400">
-                    160 ENTREGAS CATALOGADAS EN INSTAGRAM
-                  </span>
-                </div>
-                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
-                  Acreditación Canónica de Autoría, Dirección & Gráficas
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-sans max-w-2xl">
-                  Certificación documental pública en la biografía oficial de <strong className="text-white">@cuarentenarap</strong>: <em>&ldquo;Producción, Dirección y Gráficas: M S T ! Z V J E @dani.santanderurrutia&rdquo;</em>, respaldando la autoría intelectual, curaduría de arte y ejecución técnica de la trilogía.
-                </p>
-              </div>
-            </div>
-
-            <a
-              href="https://www.instagram.com/cuarentenarap/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-neutral-950 hover:bg-neutral-200 transition-all font-mono text-xs font-bold uppercase tracking-wider flex-shrink-0 shadow-md group"
-            >
-              <span>Ver Archivo Oficial</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </div>
         </div>
 
         {/* ========================================================================= */}
@@ -356,62 +313,71 @@ Contacto / Archivo Web: Disponible en el Dossier Interactivo de Competencias de 
           {works.map((work, idx) => (
             <div
               key={work.number}
-              className="relative space-y-8"
+              className="space-y-8"
             >
               
-              {/* Massive Number Watermark */}
-              <div className="select-none pointer-events-none font-serif text-[120px] sm:text-[180px] font-black text-neutral-200/60 leading-none -mb-16 sm:-mb-24 -ml-4">
-                {work.number}
+              {/* Work Header / Numeral Header */}
+              <div className="flex items-center gap-3 border-b border-neutral-200 pb-3">
+                <span className="font-serif text-3xl sm:text-4xl font-extrabold text-neutral-300">
+                  {work.number}
+                </span>
+                <span className={`font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded ${work.tagBg}`}>
+                  {work.production}
+                </span>
+                <span className="font-mono text-xs text-neutral-500 font-semibold">
+                  {work.period}
+                </span>
               </div>
 
               {/* Main Artwork Showcase Layout */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                {/* Visual Artwork Composition */}
-                <div className={`lg:col-span-7 relative ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  
-                  {/* Primary Canvas with Gallery Frame & Soft Shadow */}
-                  <div className="relative bg-white p-3 sm:p-4 rounded-2xl border border-neutral-300 shadow-[0_20px_50px_rgba(0,0,0,0.12)] transform -rotate-1 hover:rotate-0 transition-transform duration-500">
-                    <div className="aspect-[4/3] rounded-xl overflow-hidden bg-neutral-100">
-                      <img
-                        src={work.heroImage}
-                        alt={work.name}
-                        className="w-full h-full object-cover"
-                      />
+                {/* Visual Artwork Composition: 2 Clean Aligned Gallery Frames */}
+                <div className={`lg:col-span-7 ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Primary Artwork Frame */}
+                    <div className="bg-white p-3 rounded-2xl border border-neutral-300 shadow-md hover:shadow-lg transition-all duration-300 group">
+                      <div className="aspect-square rounded-xl overflow-hidden bg-neutral-100 relative">
+                        <img
+                          src={work.heroImage}
+                          alt={work.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="pt-2.5 pb-0.5 px-1 flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                        <span className="font-semibold text-neutral-800">Pieza Principal</span>
+                        <span>{work.period}</span>
+                      </div>
+                    </div>
+
+                    {/* Secondary Artwork Frame */}
+                    <div className="bg-white p-3 rounded-2xl border border-neutral-300 shadow-md hover:shadow-lg transition-all duration-300 group">
+                      <div className="aspect-square rounded-xl overflow-hidden bg-neutral-100 relative">
+                        <img
+                          src={work.secondaryImage}
+                          alt={work.production}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="pt-2.5 pb-0.5 px-1 flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                        <span className="font-semibold text-neutral-800">Registro de Archivo</span>
+                        <span>{work.production}</span>
+                      </div>
                     </div>
                   </div>
-
-                  {/* Secondary Stamped Image Bleeding Outside the Frame */}
-                  <div className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-6 w-36 sm:w-48 aspect-square bg-white p-2 sm:p-2.5 rounded-xl border border-neutral-300 shadow-2xl transform rotate-3 hover:scale-105 transition-transform duration-300 hidden sm:block">
-                    <img
-                      src={work.secondaryImage}
-                      alt={work.production}
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-
                 </div>
 
                 {/* Editorial Concept & Curation Text */}
                 <div className={`lg:col-span-5 space-y-6 ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
                   
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <span className={`font-mono text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded ${work.tagBg}`}>
-                        OBRA {work.number}
-                      </span>
-                      <span className="font-mono text-xs text-neutral-500 font-semibold">
-                        {work.period} · {work.production}
-                      </span>
-                    </div>
+                    <p className="font-mono text-xs text-neutral-500 uppercase tracking-wider font-semibold">
+                      {work.role}
+                    </p>
 
                     <h3 className="text-2xl sm:text-3xl font-serif font-bold text-neutral-950 tracking-tight leading-tight">
                       {work.name}
                     </h3>
-
-                    <p className="font-mono text-xs text-neutral-500 uppercase tracking-wider font-semibold">
-                      {work.role}
-                    </p>
                   </div>
 
                   <p className="text-sm sm:text-base text-neutral-700 leading-relaxed font-sans">

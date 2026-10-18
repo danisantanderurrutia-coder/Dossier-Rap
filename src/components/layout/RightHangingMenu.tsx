@@ -62,22 +62,22 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       shortLabel: 'Inicio',
       tagline: 'Bóveda General & Métricas',
       logo: './app_icon.svg',
-      accentColor: 'text-neutral-300',
-      glowColor: 'shadow-neutral-500/30',
-      borderColor: 'border-neutral-500',
+      accentColor: 'text-crt-amber',
+      glowColor: 'shadow-amber-500/30',
+      borderColor: 'border-crt-amber',
       badge: 'Bóveda',
-      badgeColor: 'bg-neutral-800 text-neutral-300 border-neutral-700',
+      badgeColor: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
     },
     {
       id: 'rap-beauchef',
       label: 'Rap Beauchef (Presencial)',
       shortLabel: 'Beauchef',
-      tagline: 'Anfiteatro FCFM & Fotos en Vivo',
+      tagline: 'Anfiteatro FCFM · Matriz Fundacional',
       logo: './logos/rap-beauchef.jpg',
       accentColor: 'text-crt-cyan',
       glowColor: 'shadow-cyan-500/40',
       borderColor: 'border-cyan-500',
-      badge: 'Presencial',
+      badge: 'Matriz FCFM',
       badgeColor: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30',
     },
     {
@@ -120,24 +120,24 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       id: 'rap-libre',
       label: 'Rap Libre',
       shortLabel: 'Rap Libre',
-      tagline: 'Plazas Públicas & Resistencia',
+      tagline: 'Versión Plaza & Solidaridad · Rap Beauchef',
       logo: './logos/rap-libre.jpg',
       accentColor: 'text-rose-400',
       glowColor: 'shadow-rose-500/40',
       borderColor: 'border-rose-500',
-      badge: 'Solidaria',
+      badge: 'Versión Plaza',
       badgeColor: 'bg-rose-500/10 text-rose-300 border-rose-500/30',
     },
     {
       id: 'las-escritas',
-      label: 'Batallas Escritas',
+      label: 'Las Escritas',
       shortLabel: 'Escritas',
-      tagline: 'Duelos Poéticos & Rúbricas',
+      tagline: 'Versión Duelos Poéticos · Rap Beauchef',
       logo: './logos/las-escritas.jpg',
       accentColor: 'text-amber-300',
       glowColor: 'shadow-amber-500/40',
       borderColor: 'border-amber-400',
-      badge: 'En Consulta',
+      badge: 'Versión Escrita',
       badgeColor: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
     },
   ];
@@ -223,30 +223,39 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                           : 'border-neutral-800 group-hover:border-neutral-600'
                       }`}
                     >
-                      {item.id === 'rap-libre' ? (
-                        /* Logo tipográfico exclusivo para Rap Libre */
+                      {item.id === 'dashboard' ? (
+                        /* Isotipo Oficial 'R' de la Web */
+                        <div className="w-full h-full p-2 flex items-center justify-center bg-black select-none">
+                          <img
+                            src="./app_icon.svg"
+                            alt="Dossier Rap Isotipo"
+                            className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(251,191,36,0.6)] group-hover:scale-105 transition-transform"
+                          />
+                        </div>
+                      ) : item.id === 'rap-libre' ? (
+                        /* Logo tipográfico exclusivo: Versión Plaza & Solidaridad (Rap Beauchef) */
                         <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#2b080f] via-neutral-950 to-black p-1 text-center select-none">
-                          <span className="font-mono text-[9px] tracking-[0.25em] text-rose-500 uppercase font-black leading-none">
-                            RAP
+                          <span className="font-mono text-[7px] tracking-[0.2em] text-rose-400 uppercase font-bold leading-none">
+                            BEAUCHEF
                           </span>
-                          <span className="font-mono text-[14px] sm:text-[15px] font-black tracking-tight text-white uppercase leading-none drop-shadow-[0_2px_8px_rgba(244,63,94,0.7)] group-hover:scale-105 transition-transform my-0.5">
-                            LIBRE
+                          <span className="font-mono text-[13px] sm:text-[14px] font-black tracking-tight text-white uppercase leading-none drop-shadow-[0_2px_8px_rgba(244,63,94,0.7)] group-hover:scale-105 transition-transform my-0.5">
+                            RAP LIBRE
                           </span>
-                          <span className="font-mono text-[7px] tracking-widest text-rose-300/80 uppercase font-bold leading-none">
-                            PLAZA
+                          <span className="font-mono text-[6.5px] tracking-widest text-rose-300/80 uppercase font-semibold leading-none">
+                            VERSIÓN PLAZA
                           </span>
                         </div>
                       ) : item.id === 'las-escritas' ? (
-                        /* Logo tipográfico exclusivo para Batallas Escritas */
+                        /* Logo tipográfico exclusivo: Versión Duelos Poéticos (Rap Beauchef) */
                         <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#271404] via-neutral-950 to-black p-1 text-center select-none">
-                          <span className="font-mono text-[7.5px] tracking-[0.2em] text-amber-400 uppercase font-black leading-none">
-                            BATALLAS
+                          <span className="font-mono text-[7px] tracking-[0.2em] text-amber-400 uppercase font-bold leading-none">
+                            BEAUCHEF
                           </span>
-                          <span className="font-serif italic font-black text-[12px] sm:text-[13px] tracking-wide text-amber-200 uppercase leading-none drop-shadow-[0_2px_8px_rgba(251,191,36,0.6)] group-hover:scale-105 transition-transform my-0.5">
-                            ESCRITAS
+                          <span className="font-serif italic font-black text-[11px] sm:text-[12px] tracking-wide text-amber-200 uppercase leading-none drop-shadow-[0_2px_8px_rgba(251,191,36,0.6)] group-hover:scale-105 transition-transform my-0.5">
+                            LAS ESCRITAS
                           </span>
-                          <span className="font-mono text-[7px] tracking-widest text-neutral-400 uppercase font-bold leading-none">
-                            LÍRICA
+                          <span className="font-mono text-[6.5px] tracking-widest text-neutral-400 uppercase font-semibold leading-none">
+                            DUELO POÉTICO
                           </span>
                         </div>
                       ) : (

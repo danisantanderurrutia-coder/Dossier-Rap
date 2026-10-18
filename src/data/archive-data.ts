@@ -153,8 +153,8 @@ export const archiveData: ArchiveData = {
     },
     {
       id: "rap-beauchef",
-      name: "Rap Beauchef (Presencial)",
-      subtitle: "Arena Universitaria en Vivo, Cyphers & Cultura Hip-Hop en el Anfiteatro",
+      name: "Rap Beauchef (Matriz Fundacional)",
+      subtitle: "Liga Matriz Universitaria, Cyphers & Cultura Hip-Hop en el Anfiteatro FCFM",
       years: "2019 - 2020",
       venue: "Anfiteatro FCFM (Facultad de Ciencias Físicas y Matemáticas, Universidad de Chile)",
       production: {
@@ -267,7 +267,7 @@ export const archiveData: ArchiveData = {
     {
       id: "las-escritas",
       name: "Las Escritas",
-      subtitle: "Torneo de Barras Escritas, Duelos Poéticos & Rúbrica Literaria",
+      subtitle: "Versión Duelos Poéticos (Rap Beauchef) · Torneo de Barras Escritas & Rúbrica Literaria",
       years: "2019 - 2021",
       venue: "Anfiteatro FCFM (Rap Beauchef) & Plataformas Federadas Internacionales",
       production: {
@@ -444,7 +444,7 @@ export const archiveData: ArchiveData = {
     {
       id: "rap-libre",
       name: "Rap Libre",
-      subtitle: "Conquista del Espacio Público, Ayuda Comunitaria & Resistencia Popular",
+      subtitle: "Versión Plaza & Solidaridad (Rap Beauchef) · Conquista del Espacio Público & Acopio Comunitario",
       years: "2019 - 2020",
       venue: "Plazas y Parques Urbanos de Santiago de Chile (Parque Almagro, San Borja, Bustamante)",
       production: {
