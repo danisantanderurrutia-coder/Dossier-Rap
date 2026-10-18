@@ -87,7 +87,8 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       period: '2020–2021',
       type: 'Ritual Pandémico (4 Fases)',
       description: 'La liga del confinamiento estructurada como un rito: de la muerte simbólica (Fase de Tumbas) a la liberación lírica.',
-      logo: './logos/cuarentena-rap.jpg',
+      logo: './logos/cuarentena-rap.png',
+
       fallbackIcon: Skull,
       accentColor: 'text-crt-amber',
       borderColor: 'border-amber-500/30',

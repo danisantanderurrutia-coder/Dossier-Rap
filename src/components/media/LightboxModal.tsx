@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { X, Calendar, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PosterItem } from '../../types/archive';
 import { Badge } from '../ui/Badge';
+import { InstagramIcon } from '../ui/SocialIcons';
 
 interface LightboxModalProps {
   poster: PosterItem | null;
@@ -106,9 +107,21 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
             </p>
           </div>
 
-          <div className="pt-4 border-t border-surface-border space-y-2 text-[11px] font-mono text-neutral-400">
-            <div>FORMATO: JPG ORIGINAL // RESOLUCIÓN ARCHIVO</div>
-            <div>CURADURÍA: DANIEL S. SANTANDER URRUTIA</div>
+          <div className="pt-4 border-t border-surface-border space-y-3">
+            <a
+              href={`https://www.instagram.com/p/${poster.id}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-pink-500/10 border border-pink-500/40 text-pink-400 hover:bg-pink-500 hover:text-white font-mono text-xs font-bold transition-all shadow-md group"
+            >
+              <InstagramIcon className="w-4 h-4 text-pink-400 group-hover:text-white" />
+              <span>Ver Publicación en Instagram ↗</span>
+            </a>
+
+            <div className="space-y-1 text-[11px] font-mono text-neutral-400">
+              <div>FORMATO: JPG ORIGINAL // RESOLUCIÓN ARCHIVO</div>
+              <div>CURADURÍA: DANIEL S. SANTANDER URRUTIA</div>
+            </div>
           </div>
 
 

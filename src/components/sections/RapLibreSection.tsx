@@ -1,7 +1,10 @@
-import React from 'react';
-import { Megaphone, HeartHandshake, Flame, Users, ArrowLeft } from 'lucide-react';
+import React, { useState } from 'react';
+import { Megaphone, HeartHandshake, Flame, Users, ArrowLeft, Maximize2, Sparkles, Camera } from 'lucide-react';
 import { Badge } from '../ui/Badge';
+import { InstagramIcon } from '../ui/SocialIcons';
 import { archiveData } from '../../data/archive-data';
+import { galleryData } from '../../data/gallery-data';
+import { LightboxModal } from '../media/LightboxModal';
 
 interface RapLibreSectionProps {
   onViewGalleryForLibre?: () => void;
@@ -12,6 +15,15 @@ export const RapLibreSection: React.FC<RapLibreSectionProps> = ({
   onBackToDashboard,
 }) => {
   const data = archiveData.competitions.find((c) => c.id === 'rap-libre')!;
+
+  // Fotografías de Rap Libre, Plaza Dignidad y Cyphers Callejeros
+  const rapLibrePhotos = galleryData.filter(
+    (item) =>
+      item.competitionId === 'rap-libre' ||
+      ['B3VR8cqABYU', 'B3VfufbAH6A', 'B3ZZb3BgR1R', 'B9ljgLMngum'].includes(item.id)
+  );
+
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
 
   return (
     <section id="rap-libre" className="py-12 border-b border-surface-border bg-gradient-to-b from-[#180d0d] via-background to-background">
@@ -109,7 +121,100 @@ export const RapLibreSection: React.FC<RapLibreSectionProps> = ({
 
         </div>
 
+        {/* Photographic Archive: Registro en Vivo & Plaza */}
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-2 border-b border-surface-border/60">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <Camera className="w-4 h-4 text-crt-red" />
+                <span className="font-mono text-xs uppercase tracking-wider text-crt-red font-bold">
+                  Archivo Fotográfico // Espacio Público & Resistencia
+                </span>
+              </div>
+              <h3 className="font-mono text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-crt-red" />
+                <span>Postales de Rap Libre & Movilización Popular</span>
+              </h3>
+            </div>
+            <span className="font-mono text-xs text-neutral-400">
+              {rapLibrePhotos.length} REGISTROS FOTOGRÁFICOS DESCLASIFICADOS
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {rapLibrePhotos.map((photo, idx) => (
+              <div
+                key={photo.id}
+                className="group bg-surface border border-surface-border rounded-xl overflow-hidden hover:border-rose-500/60 hover:shadow-glow-red transition-all duration-300 flex flex-col justify-between"
+              >
+                <div
+                  onClick={() => setSelectedPhotoIndex(idx)}
+                  className="cursor-pointer relative aspect-[4/3] bg-neutral-950 overflow-hidden"
+                >
+                  <img
+                    src={`./covers/instagram/${photo.filename}`}
+                    alt={photo.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                    <div className="p-2.5 rounded-full bg-black/70 backdrop-blur-md text-white border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Maximize2 className="w-4 h-4 text-rose-400" />
+                    </div>
+                  </div>
+                  <div className="absolute top-2 left-2">
+                    <span className="font-mono text-[9px] uppercase font-bold px-2 py-0.5 rounded bg-black/80 border border-white/10 text-rose-300">
+                      {photo.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-4 space-y-3 flex-1 flex flex-col justify-between border-t border-surface-border/40">
+                  <div className="space-y-1.5">
+                    <h4 className="font-mono text-sm font-bold text-white group-hover:text-rose-400 transition-colors">
+                      {photo.title}
+                    </h4>
+                    <p className="text-xs text-neutral-300 font-sans line-clamp-3 leading-relaxed">
+                      {photo.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t border-surface-border/40 flex items-center justify-between">
+                    <button
+                      onClick={() => setSelectedPhotoIndex(idx)}
+                      className="font-mono text-[11px] text-rose-400 hover:text-rose-300 flex items-center gap-1 cursor-pointer"
+                    >
+                      <Maximize2 className="w-3 h-3" />
+                      <span>Ampliar Foto</span>
+                    </button>
+
+                    <a
+                      href={`https://www.instagram.com/p/${photo.id}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-neutral-900 border border-rose-500/30 text-rose-400 hover:bg-rose-500 hover:text-white font-mono text-[10px] font-bold transition-all shadow-sm"
+                    >
+                      <InstagramIcon className="w-3 h-3" />
+                      <span>Instagram ↗</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Lightbox Modal for Rap Libre */}
+        {selectedPhotoIndex !== null && rapLibrePhotos[selectedPhotoIndex] && (
+          <LightboxModal
+            poster={rapLibrePhotos[selectedPhotoIndex]}
+            onClose={() => setSelectedPhotoIndex(null)}
+            onNext={() => setSelectedPhotoIndex((prev) => ((prev ?? 0) + 1) % rapLibrePhotos.length)}
+            onPrev={() => setSelectedPhotoIndex((prev) => (((prev ?? 0) - 1 + rapLibrePhotos.length) % rapLibrePhotos.length))}
+          />
+        )}
+
       </div>
     </section>
   );
 };
+

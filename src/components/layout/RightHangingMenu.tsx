@@ -69,7 +69,7 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       label: 'Inicio / Manifiesto',
       shortLabel: 'Inicio',
       tagline: 'Bóveda General & Métricas',
-      logo: './logos/dashboard.jpg',
+      logo: './app_icon.svg',
       fallbackIcon: LayoutGrid,
       accentColor: 'text-neutral-300',
       glowColor: 'shadow-neutral-500/30',
@@ -121,14 +121,15 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       label: 'Cuarentena Rap',
       shortLabel: 'Cuarentena',
       tagline: 'Muerte Simbólica & 4 Fases',
-      logo: './logos/cuarentena-rap.jpg',
+      logo: './logos/cuarentena-rap.png',
       fallbackIcon: Skull,
       accentColor: 'text-crt-amber',
-      glowColor: 'shadow-amber-500/40',
-      borderColor: 'border-amber-500',
-      badge: 'Cinemática',
-      badgeColor: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
+      glowColor: 'shadow-amber-500/50',
+      borderColor: 'border-amber-400',
+      badge: 'Oficial QRTN',
+      badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/50',
     },
+
     {
       id: 'rap-libre',
       label: 'Rap Libre',
@@ -190,19 +191,27 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
           {/* Header on expanded */}
           {isExpanded && (
             <div className="px-3 pb-3.5 mb-3 border-b border-surface-border/80 flex items-center justify-between">
-              <div>
-                <span className="font-mono text-xs text-crt-amber uppercase tracking-wider block font-bold">
-                  Navegación de Archivo
-                </span>
-                <span className="font-mono text-base text-white font-bold">
-                  Secciones & Expedientes
-                </span>
+              <div className="flex items-center gap-3">
+                <img
+                  src="./app_icon.svg"
+                  alt="Dossier Rap"
+                  className="w-8 h-8 rounded-lg border border-crt-amber/40 shadow-glow-amber p-0.5 bg-black flex-shrink-0"
+                />
+                <div>
+                  <span className="font-mono text-[10px] text-crt-amber uppercase tracking-wider block font-bold">
+                    Dossier Cultural Rap
+                  </span>
+                  <span className="font-mono text-sm text-white font-bold">
+                    Expedientes & Archivo
+                  </span>
+                </div>
               </div>
-              <span className="font-mono text-xs bg-neutral-900 text-crt-amber px-3 py-1 rounded-md border border-neutral-800 font-bold">
+              <span className="font-mono text-xs bg-neutral-900 text-crt-amber px-2.5 py-1 rounded-md border border-neutral-800 font-bold">
                 7 Módulos
               </span>
             </div>
           )}
+
 
           {/* List of sections */}
           <div className="space-y-3">

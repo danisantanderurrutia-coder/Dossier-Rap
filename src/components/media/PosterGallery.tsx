@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Maximize2, Tag } from 'lucide-react';
 import { galleryData } from '../../data/gallery-data';
 import { PosterItem } from '../../types/archive';
 import { Badge } from '../ui/Badge';
+import { InstagramIcon } from '../ui/SocialIcons';
 import { LightboxModal } from './LightboxModal';
 
 interface PosterGalleryProps {
@@ -222,11 +223,20 @@ export const PosterGallery: React.FC<PosterGalleryProps> = ({
 
             </div>
 
-            {/* Bottom Technical Deck */}
-            <div className="pt-6 border-t border-surface-border">
+            {/* Direct External Link to Instagram */}
+            <div className="pt-4 border-t border-surface-border space-y-3">
+              <a
+                href={`https://www.instagram.com/p/${currentPoster.id}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-pink-500/10 border border-pink-500/40 text-pink-400 hover:bg-pink-500 hover:text-white font-mono text-xs font-bold transition-all shadow-md group"
+              >
+                <InstagramIcon className="w-4 h-4 text-pink-400 group-hover:text-white transition-colors" />
+                <span>Ver Registro Original en Instagram ↗</span>
+              </a>
+
               <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400">
                 <span>CURADOR: DANIEL S. SANTANDER URRUTIA</span>
-
                 <span>ORIGEN: ARCHIVO OFICIAL INSTAGRAM</span>
               </div>
             </div>

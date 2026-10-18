@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { CuarentenaPortal, PortalBattleVideo } from '../../types/cuarentena';
 import { YoutubeVideo } from '../../types/archive';
+import { InstagramIcon } from '../ui/SocialIcons';
 import { BoneArrowButton } from './BoneArrowButton';
 import { HorizontalSpineTimeline } from './HorizontalSpineTimeline';
 import { DarkAmbientPlayer } from './DarkAmbientPlayer';
@@ -35,6 +36,8 @@ interface HangingItem {
   desc?: string;
   isVertical?: boolean;
   isSquare?: boolean;
+  instagramUrl?: string;
+  externalUrl?: string;
 }
 
 // 65 Verified Vertical (9:16 smartphone portrait) videos recorded during the 2020 pandemic
@@ -235,6 +238,19 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
         region: 'Red Virtual',
         desc: 'Canal de voz de 320kbps y recepción de tomas de video para evaluación a ciegas.',
         isSquare: true,
+        instagramUrl: 'https://www.instagram.com/p/CBCA5DGFBwO/',
+      });
+      list.push({
+        id: 'nenewladi-production-card',
+        title: 'Nene Wladi · Beatmaker & Producción Urbana',
+        tag: 'BEATMAKER / ARTISTA OFICIAL',
+        imageUrl: './covers/instagram/CGBnB36jLL8.jpg',
+        league: 'Producción Musical & Ecosistema',
+        region: 'Chile',
+        desc: 'Compositor e instrumentista urbano del circuito. Haz clic en el enlace para escuchar sus canciones y lanzamientos oficiales en Instagram (@nenewladi).',
+        isSquare: true,
+        instagramUrl: 'https://www.instagram.com/nenewladi/',
+        externalUrl: 'https://www.instagram.com/nenewladi/',
       });
 
       // Filter screenshots (All vertical phone recordings)
@@ -409,20 +425,36 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
         title: 'Crizzo: Campeón Absoluto de Cuarentena Rap',
         tag: 'EL RESUCITADO // CAMPEÓN 2020',
         imageUrl: './covers/instagram/CGBnI06jRLK.jpg',
+        videoId: 'k5gCKdOxmYU',
         league: 'Erasmo Battles // UAH Freestyle',
         region: 'Santiago',
         desc: 'Superó la peste en las tumbas, purgó en los karmas y se alzó en la cumbre.',
         isSquare: true,
+        instagramUrl: 'https://www.instagram.com/p/CGBnI06jRLK/',
+      });
+      list.push({
+        id: 'pimc-finalist-video-card',
+        title: 'Pimc: Subcampeón & Video Ruta a la Final',
+        tag: 'TOMA VERTICAL // RUTA A LA FINAL',
+        imageUrl: 'https://img.youtube.com/vi/l2PwaGDStx8/hqdefault.jpg',
+        videoId: 'l2PwaGDStx8',
+        league: 'Rap Rules Oficial',
+        region: 'Santiago',
+        beatmaker: 'Beatime (Beatmaker Exclusivo)',
+        desc: 'Registro en video vertical de la semifinal contra Niggy y ruta directa a la Gran Final. Haz clic para reproducir arriba.',
+        isVertical: true,
+        instagramUrl: 'https://www.instagram.com/p/CGln20TAcaU/',
       });
       list.push({
         id: 'pimc-finalist-card',
-        title: 'Pimc: Subcampeón & Representante Rap Rules',
+        title: 'Pimc: Afiche Oficial Gran Final',
         tag: 'FINALISTA CONSAGRADO // RAP RULES',
         imageUrl: './covers/instagram/CGln20TAcaU.jpg',
         league: 'Rap Rules Oficial',
         region: 'Santiago',
-        desc: 'Campaña implacable desde el suicidio inicial hasta la gran final.',
+        desc: 'Campaña implacable desde el suicidio inicial en las tumbas hasta el duelo por el campeonato.',
         isSquare: true,
+        instagramUrl: 'https://www.instagram.com/p/CGln20TAcaU/',
       });
       list.push({
         id: 'oes-beatbox-card',
@@ -433,6 +465,7 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
         region: 'Chile',
         desc: 'Patrones de beatbox acústico para la ronda de improvisación y escrita libre.',
         isSquare: true,
+        instagramUrl: 'https://www.instagram.com/p/CDMWyFale-C/',
       });
     }
 
@@ -444,6 +477,7 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
     url: string;
     title: string;
     desc?: string;
+    instagramUrl?: string;
   } | null>(null);
 
   const handlePrev = () => {
@@ -484,9 +518,23 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
             </button>
           )}
 
-          <div className="font-mono text-[9px] text-crt-amber tracking-widest uppercase hidden sm:flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-crt-amber animate-ping" />
-            <span>MACRO-FASE // {currentPortal.macroPhase.toUpperCase()} (2020)</span>
+          {/* Logo Oficial Máscara de Médico de la Peste & QRTN */}
+          <div className="flex items-center gap-2.5">
+            <img
+              src="./logos/cuarentena-rap.png"
+              alt="Cuarentena Rap QRTN Oficial"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-amber-400/80 shadow-glow-amber bg-black object-contain p-0.5 flex-shrink-0"
+            />
+            <div>
+              <span className="font-mono text-xs font-bold text-white tracking-wider flex items-center gap-1.5">
+                <span>CUARENTENA RAP</span>
+                <span className="px-1 py-0.2 rounded bg-amber-400 text-black text-[8px] font-black uppercase">QRTN</span>
+              </span>
+              <div className="font-mono text-[9px] text-crt-amber tracking-widest uppercase hidden sm:flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-crt-amber animate-ping" />
+                <span>MACRO-FASE // {currentPortal.macroPhase.toUpperCase()} (2020)</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -864,7 +912,7 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
                     </div>
 
                     {/* Actions footer */}
-                    <div className="px-3 py-1.5 bg-neutral-900/80 border-t border-neutral-800/80 flex items-center justify-between text-[9px] font-mono">
+                    <div className="px-3 py-1.5 bg-neutral-900/80 border-t border-neutral-800/80 flex items-center justify-between text-[9px] font-mono gap-1">
                       {item.videoId ? (
                         <button
                           onClick={() => {
@@ -874,14 +922,37 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
                               window.scrollTo({ top: 120, behavior: 'smooth' });
                             }
                           }}
-                          className="text-crt-amber hover:text-amber-300 flex items-center gap-1 font-bold transition-colors"
+                          className="text-crt-amber hover:text-amber-300 flex items-center gap-1 font-bold transition-colors cursor-pointer"
                         >
                           <PlayCircle className="w-3 h-3" />
-                          <span>Cargar Video Arriba ↗</span>
+                          <span>Cargar Video ↗</span>
                         </button>
                       ) : (
-                        <span className="text-neutral-500">Documento de Archivo</span>
+                        <span className="text-neutral-500">Documento Archivo</span>
                       )}
+
+                      {/* Enlace directo a Instagram / Perfil externo */}
+                      {(() => {
+                        const directUrl =
+                          item.instagramUrl ||
+                          item.externalUrl ||
+                          (item.imageUrl.includes('/covers/instagram/')
+                            ? `https://www.instagram.com/p/${item.imageUrl.split('/').pop()?.replace('.jpg', '')}/`
+                            : null);
+                        if (!directUrl) return null;
+                        return (
+                          <a
+                            href={directUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-pink-400 hover:text-pink-300 flex items-center gap-1 font-bold transition-colors"
+                            title="Abrir publicación original en Instagram"
+                          >
+                            <InstagramIcon className="w-3 h-3" />
+                            <span>Instagram ↗</span>
+                          </a>
+                        );
+                      })()}
 
                       <button
                         onClick={() =>
@@ -889,11 +960,17 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
                             url: item.imageUrl,
                             title: item.title,
                             desc: item.desc,
+                            instagramUrl:
+                              item.instagramUrl ||
+                              item.externalUrl ||
+                              (item.imageUrl.includes('/covers/instagram/')
+                                ? `https://www.instagram.com/p/${item.imageUrl.split('/').pop()?.replace('.jpg', '')}/`
+                                : undefined),
                           })
                         }
-                        className="text-neutral-400 hover:text-white transition-colors"
+                        className="text-neutral-400 hover:text-white transition-colors cursor-pointer"
                       >
-                        Ampliar Captura &rarr;
+                        Ampliar &rarr;
                       </button>
                     </div>
                   </div>
@@ -911,7 +988,7 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
           <div className="relative max-w-4xl w-full bg-neutral-950 border border-neutral-800 rounded-2xl overflow-hidden shadow-2xl">
             <button
               onClick={() => setLightboxImage(null)}
-              className="absolute top-3 right-3 z-10 p-1.5 rounded-full bg-black/80 text-white hover:text-crt-amber border border-neutral-700"
+              className="absolute top-3 right-3 z-10 p-1.5 rounded-full bg-black/80 text-white hover:text-crt-amber border border-neutral-700 cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -922,12 +999,25 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
                 className="max-h-[75vh] w-auto object-contain rounded-lg"
               />
             </div>
-            <div className="p-3 bg-neutral-900 space-y-0.5">
-              <h4 className="font-mono text-xs font-bold text-white">
-                {lightboxImage.title}
-              </h4>
+            <div className="p-3.5 bg-neutral-900 space-y-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <h4 className="font-mono text-xs font-bold text-white">
+                  {lightboxImage.title}
+                </h4>
+                {lightboxImage.instagramUrl && (
+                  <a
+                    href={lightboxImage.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-pink-500/10 border border-pink-500/40 text-pink-400 hover:bg-pink-500 hover:text-white font-mono text-[10px] font-bold transition-all shadow-sm flex-shrink-0"
+                  >
+                    <InstagramIcon className="w-3.5 h-3.5" />
+                    <span>Ver en Instagram ↗</span>
+                  </a>
+                )}
+              </div>
               {lightboxImage.desc && (
-                <p className="text-[10px] text-neutral-400 font-sans">
+                <p className="text-[10px] text-neutral-400 font-sans leading-relaxed">
                   {lightboxImage.desc}
                 </p>
               )}

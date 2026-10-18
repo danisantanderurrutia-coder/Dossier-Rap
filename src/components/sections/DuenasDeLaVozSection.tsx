@@ -20,6 +20,9 @@ export const DuenasDeLaVozSection: React.FC<DuenasDeLaVozSectionProps> = ({
   const videos = data?.media?.youtube_videos || [];
   const queenaVideo = videos.find((v) => v.id === 'NcDejj3NKXo') || videos[0];
 
+  // Estado del video actualmente seleccionado para el reproductor interactivo
+  const [activeVideo, setActiveVideo] = useState<YoutubeVideo>(queenaVideo);
+
   // Afiches y fotografías pertenecientes a Dueñas de la Voz
   const duenasItems = galleryData.filter(
     (item) => item.competitionId === 'duenas-de-la-voz'
@@ -27,7 +30,15 @@ export const DuenasDeLaVozSection: React.FC<DuenasDeLaVozSectionProps> = ({
 
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
 
-  const handleOpenVideo = (video: YoutubeVideo) => {
+  const handleSelectVideo = (video: YoutubeVideo) => {
+    setActiveVideo(video);
+    const playerEl = document.getElementById('duenas-player-spotlight');
+    if (playerEl) {
+      playerEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  const handleOpenVideoExternal = (video: YoutubeVideo) => {
     if (onSelectVideo) {
       onSelectVideo(video);
     } else {
@@ -56,43 +67,58 @@ export const DuenasDeLaVozSection: React.FC<DuenasDeLaVozSectionProps> = ({
           </div>
         )}
 
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-surface-border/60">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <Badge variant="magenta">Hito Histórico de Soberanía Lírica // 2019–2020</Badge>
-              <span className="font-mono text-xs text-neutral-400">Pionero en el Freestyle Universitario</span>
-              
-              <a
-                href="https://www.instagram.com/rap.beauchef/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-pink-500/30 text-pink-400 font-mono text-[10px] hover:bg-pink-500/10 transition-colors"
-              >
-                <InstagramIcon className="w-3 h-3" />
-                <span>@rap.beauchef</span>
-              </a>
-              <a
-                href="https://www.youtube.com/@rapbeauchef8447"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-red-500/30 text-red-400 font-mono text-[10px] hover:bg-red-500/10 transition-colors"
-              >
-                <YoutubeIcon className="w-3 h-3" />
-                <span>@rapbeauchef8447</span>
-              </a>
+        {/* Section Header with Official Logo Emphasis */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-surface-border/60">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+            {/* Logo Oficial con Énfasis Visual */}
+            <div className="relative group flex-shrink-0 self-start sm:self-center">
+              <div className="absolute -inset-1 bg-gradient-to-r from-fuchsia-600 via-pink-600 to-purple-600 rounded-2xl blur-md opacity-75 group-hover:opacity-100 transition duration-500" />
+              <img
+                src="./logos/duenas-de-la-voz.jpg"
+                alt="Logo Oficial Dueñas de la Voz"
+                className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover border-2 border-fuchsia-400 shadow-glow-magenta bg-black"
+              />
+              <span className="absolute -bottom-2 -right-1 px-1.5 py-0.5 rounded bg-fuchsia-500 text-neutral-950 font-mono text-[9px] font-black uppercase tracking-wider shadow">
+                EMBLEMA
+              </span>
             </div>
 
-            <h2
-              data-text="DUEÑAS DE LA VOZ"
-              className="glitch-text font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center gap-3"
-            >
-              <Trophy className="w-9 h-9 text-fuchsia-400 inline" />
-              DUEÑAS DE LA VOZ
-            </h2>
-            <p className="text-xs sm:text-sm text-neutral-400 mt-2 font-mono">
-              {data?.subtitle || 'Certamen & Conversatorio de Soberanía Lírica Femenina'}
-            </p>
+            <div>
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <Badge variant="magenta">Hito Histórico de Soberanía Lírica // 2019–2020</Badge>
+                <span className="font-mono text-xs text-neutral-400">Pionero en Freestyle Universitario</span>
+                
+                <a
+                  href="https://www.instagram.com/rap.beauchef/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-pink-500/30 text-pink-400 font-mono text-[10px] hover:bg-pink-500/10 transition-colors"
+                >
+                  <InstagramIcon className="w-3 h-3" />
+                  <span>@rap.beauchef</span>
+                </a>
+                <a
+                  href="https://www.youtube.com/@rapbeauchef8447"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-red-500/30 text-red-400 font-mono text-[10px] hover:bg-red-500/10 transition-colors"
+                >
+                  <YoutubeIcon className="w-3 h-3" />
+                  <span>@rapbeauchef8447</span>
+                </a>
+              </div>
+
+              <h2
+                data-text="DUEÑAS DE LA VOZ"
+                className="glitch-text font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center gap-3"
+              >
+                <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-fuchsia-400 inline" />
+                DUEÑAS DE LA VOZ
+              </h2>
+              <p className="text-xs sm:text-sm text-neutral-300 mt-1 font-mono">
+                {data?.subtitle || 'Certamen & Conversatorio de Soberanía Lírica Femenina'}
+              </p>
+            </div>
           </div>
 
           {/* Malala Quote Banner */}
@@ -145,47 +171,67 @@ export const DuenasDeLaVozSection: React.FC<DuenasDeLaVozSectionProps> = ({
           </div>
         </div>
 
-        {/* Feature Spotlight: Final de QUEENA */}
-        {queenaVideo && (
-          <div className="bg-gradient-to-r from-surface via-[#1b1022] to-neutral-900 border border-fuchsia-500/40 rounded-2xl p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
-            <div className="space-y-4 max-w-xl">
-              <div className="flex items-center gap-2">
-                <Badge variant="magenta">Registro Audiovisual Oficial</Badge>
+        {/* Feature Spotlight: REPRODUCTOR INTERACTIVO EN VIVO */}
+        {activeVideo && (
+          <div
+            id="duenas-player-spotlight"
+            className="bg-gradient-to-r from-surface via-[#1b1022] to-neutral-900 border border-fuchsia-500/40 rounded-2xl p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl transition-all"
+          >
+            <div className="space-y-4 max-w-xl w-full">
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="magenta">
+                  {activeVideo.id === queenaVideo?.id ? 'Campeona · Gran Final' : 'Presentación en Vivo'}
+                </Badge>
                 <span className="font-mono text-xs text-neutral-400">Anfiteatro FCFM Universidad de Chile</span>
+                {activeVideo.duration && (
+                  <span className="px-2 py-0.5 rounded bg-black/60 border border-fuchsia-500/30 font-mono text-[10px] text-fuchsia-300 flex items-center gap-1">
+                    <Clock className="w-3 h-3 text-fuchsia-400" />
+                    <span>{activeVideo.duration}</span>
+                  </span>
+                )}
               </div>
-              <h3 className="font-mono text-2xl font-bold text-white">
-                QUEENA — Gran Final Dueñas de la Voz (Campeona)
+
+              <h3 className="font-mono text-xl sm:text-2xl font-bold text-white">
+                {activeVideo.title}
               </h3>
-              <p className="text-xs text-neutral-300 leading-relaxed font-sans">
-                Documento desclasificado en directo con la presentación y coronación de QUEENA. Una demostración contundente de métrica lírica, coherencia conceptual y puesta en escena frente a cientos de asistentes.
+
+              <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-sans">
+                {activeVideo.id === queenaVideo?.id
+                  ? 'Documento desclasificado en directo con la presentación y coronación de QUEENA. Una demostración contundente de métrica lírica, coherencia conceptual y puesta en escena frente a cientos de asistentes.'
+                  : 'Registro oficial de la jornada de batallas y conversatorio de Dueñas de la Voz. Reproducción activa directamente en el visor inmersivo del dossier.'}
               </p>
-              <button
-                onClick={() => handleOpenVideo(queenaVideo)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-fuchsia-500 text-neutral-950 font-mono text-xs font-bold uppercase tracking-wider hover:bg-fuchsia-400 transition-colors shadow-lg"
-              >
-                <PlayCircle className="w-4 h-4" />
-                <span>Ver Batalla en YouTube</span>
-              </button>
+
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <button
+                  onClick={() => handleOpenVideoExternal(activeVideo)}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-fuchsia-500 text-neutral-950 font-mono text-xs font-bold uppercase tracking-wider hover:bg-fuchsia-400 transition-colors shadow-lg"
+                >
+                  <YoutubeIcon className="w-4 h-4" />
+                  <span>Abrir en YouTube ↗</span>
+                </button>
+
+                <a
+                  href="https://www.instagram.com/rap.beauchef/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-300 hover:text-white font-mono text-xs transition-colors"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5 text-pink-400" />
+                  <span>Instagram de la Liga</span>
+                </a>
+              </div>
             </div>
 
-            <div
-              onClick={() => handleOpenVideo(queenaVideo)}
-              className="group cursor-pointer relative aspect-video w-full lg:w-96 rounded-xl overflow-hidden border border-fuchsia-500/50 shadow-2xl flex-shrink-0"
-            >
-              <img
-                src={`./covers/youtube/${queenaVideo.id}.jpg`}
-                alt={queenaVideo.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            {/* Embedded Iframe Player */}
+            <div className="relative aspect-video w-full lg:w-[480px] rounded-xl overflow-hidden border-2 border-fuchsia-500/60 shadow-glow-magenta bg-black flex-shrink-0">
+              <iframe
+                key={activeVideo.id}
+                src={`https://www.youtube-nocookie.com/embed/${activeVideo.id}?autoplay=0&rel=0`}
+                title={activeVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
               />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                <div className="w-14 h-14 rounded-full bg-fuchsia-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <PlayCircle className="w-8 h-8" />
-                </div>
-              </div>
-              <div className="absolute bottom-2.5 right-2.5 bg-black/80 px-2 py-0.5 rounded text-[10px] font-mono text-neutral-200 border border-white/10 flex items-center gap-1">
-                <Clock className="w-3 h-3 text-fuchsia-400" />
-                <span>{queenaVideo.duration || '2:38'}</span>
-              </div>
             </div>
           </div>
         )}
@@ -206,7 +252,7 @@ export const DuenasDeLaVozSection: React.FC<DuenasDeLaVozSectionProps> = ({
               </h3>
             </div>
             <span className="font-mono text-xs text-neutral-400">
-              5 REGISTROS OFICIALES EN YOUTUBE
+              HAZ CLIC EN CUALQUIERA PARA REPRODUCIR ARRIBA
             </span>
           </div>
 
@@ -214,10 +260,10 @@ export const DuenasDeLaVozSection: React.FC<DuenasDeLaVozSectionProps> = ({
             {videos.map((vid) => (
               <div
                 key={vid.id}
-                onClick={() => handleOpenVideo(vid)}
+                onClick={() => handleSelectVideo(vid)}
                 className={`group cursor-pointer bg-surface border rounded-xl overflow-hidden transition-all duration-300 flex flex-col justify-between ${
-                  vid.id === queenaVideo?.id
-                    ? 'border-fuchsia-500/80 shadow-glow-magenta'
+                  vid.id === activeVideo?.id
+                    ? 'border-fuchsia-400 shadow-glow-magenta scale-[1.02] bg-fuchsia-950/20'
                     : 'border-surface-border hover:border-fuchsia-500/50 hover:shadow-glow-magenta'
                 }`}
               >
@@ -228,7 +274,9 @@ export const DuenasDeLaVozSection: React.FC<DuenasDeLaVozSectionProps> = ({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                    <div className="w-10 h-10 rounded-full bg-fuchsia-500/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform ${
+                      vid.id === activeVideo?.id ? 'bg-fuchsia-400 text-neutral-950' : 'bg-fuchsia-500/90 text-white'
+                    }`}>
                       <PlayCircle className="w-6 h-6" />
                     </div>
                   </div>
