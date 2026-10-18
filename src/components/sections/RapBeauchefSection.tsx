@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mic2, Volume2, Users, ArrowLeft, Camera, MapPin, Disc3, Maximize2, PlayCircle, Video, Sparkles, Clock } from 'lucide-react';
+import { Mic2, Volume2, Users, ArrowLeft, Camera, MapPin, Disc3, Maximize2, PlayCircle, Video, Sparkles, Clock, Feather } from 'lucide-react';
 import { Badge } from '../ui/Badge';
 import { InstagramIcon, YoutubeIcon } from '../ui/SocialIcons';
 import { archiveData } from '../../data/archive-data';
@@ -25,23 +25,6 @@ export const RapBeauchefSection: React.FC<RapBeauchefSectionProps> = ({
   );
 
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
-  const [videoFilter, setVideoFilter] = useState<'all' | 'finals' | 'quarters' | 'eighths' | 'bdg2017'>('all');
-
-  const filteredVideos = allVideos.filter((v) => {
-    if (videoFilter === 'finals') {
-      return v.stage?.includes('Final') || v.stage?.includes('Semifinales') || v.stage?.includes('3er Lugar');
-    }
-    if (videoFilter === 'quarters') {
-      return v.stage?.includes('4tos');
-    }
-    if (videoFilter === 'eighths') {
-      return v.stage?.includes('8vos') || v.stage?.includes('Filtros');
-    }
-    if (videoFilter === 'bdg2017') {
-      return v.stage?.includes('BDG 2017');
-    }
-    return true;
-  });
 
   const handleOpenVideo = (video: YoutubeVideo) => {
     if (onSelectVideo) {
@@ -105,7 +88,7 @@ export const RapBeauchefSection: React.FC<RapBeauchefSectionProps> = ({
               className="glitch-text font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center gap-3"
             >
               <Mic2 className="w-9 h-9 text-crt-cyan inline" />
-              RAP BEAUCHEF
+              RAP BEAUCHEF (PRESENCIAL)
             </h2>
             <p className="text-xs sm:text-sm text-neutral-400 mt-2 font-mono">
               {data.subtitle}
@@ -161,49 +144,29 @@ export const RapBeauchefSection: React.FC<RapBeauchefSectionProps> = ({
           </div>
         </div>
 
-        {/* Video Vault: 23 Batallas Oficiales Recuperadas */}
+        {/* Video Vault: Presencial Live Battles (BDG Beauchef 2017) */}
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-2 border-b border-surface-border/60">
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <Video className="w-4 h-4 text-crt-cyan" />
                 <span className="font-mono text-xs uppercase tracking-wider text-crt-cyan font-bold">
-                  Bóveda Audiovisual // Canal Oficial @rapbeauchef8447
+                  Bóveda Presencial // Canal Oficial @rapbeauchef8447
                 </span>
               </div>
               <h3 className="font-mono text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-crt-cyan" />
-                Batallas Escritas en Anfiteatro & BDG Beauchef 2017
+                Batallas Presenciales en Vivo // BDG Beauchef 2017
               </h3>
             </div>
-            
-            {/* Filter buttons */}
-            <div className="flex flex-wrap gap-2 text-xs font-mono">
-              {[
-                { id: 'all', label: `Todas (${allVideos.length})` },
-                { id: 'finals', label: 'Finales & Semis' },
-                { id: 'quarters', label: '4tos Temáticos' },
-                { id: 'eighths', label: '8vos' },
-                { id: 'bdg2017', label: 'BDG 2017' },
-              ].map((filter) => (
-                <button
-                  key={filter.id}
-                  onClick={() => setVideoFilter(filter.id as any)}
-                  className={`px-3 py-1.5 rounded-lg border transition-all ${
-                    videoFilter === filter.id
-                      ? 'bg-cyan-500/20 border-cyan-500 text-crt-cyan font-bold shadow-glow-cyan'
-                      : 'bg-surface border-surface-border text-neutral-400 hover:text-white hover:border-neutral-700'
-                  }`}
-                >
-                  {filter.label}
-                </button>
-              ))}
-            </div>
+            <span className="font-mono text-xs text-neutral-400">
+              {allVideos.length} BATALLAS PRESENCIALES RECUPERADAS
+            </span>
           </div>
 
           {/* Videos Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredVideos.map((video) => (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {allVideos.map((video) => (
               <div
                 key={video.id}
                 onClick={() => handleOpenVideo(video)}
@@ -248,6 +211,19 @@ export const RapBeauchefSection: React.FC<RapBeauchefSectionProps> = ({
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Notice pointing to Las Escritas */}
+        <div className="bg-gradient-to-r from-surface via-[#0a1820] to-surface border border-cyan-500/30 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
+          <div className="space-y-1">
+            <span className="font-mono text-xs text-crt-cyan uppercase font-bold tracking-wider flex items-center gap-2">
+              <Feather className="w-4 h-4 text-amber-400" />
+              Torneo de Batallas Escritas Rap Beauchef
+            </span>
+            <p className="text-xs text-neutral-300 font-sans leading-relaxed">
+              Las 20 batallas escritas del anfiteatro (cuartos temáticos de personajes, semifinales y la gran final Daimon vs Komply) han sido trasladadas al expediente monográfico <strong>Las Escritas</strong> en el menú lateral.
+            </p>
           </div>
         </div>
 

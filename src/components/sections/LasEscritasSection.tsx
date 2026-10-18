@@ -1,6 +1,7 @@
-import React from 'react';
-import { PenTool, PlayCircle, BookOpen, ArrowLeft, HelpCircle, CheckCircle2, Feather, Flame } from 'lucide-react';
+import React, { useState } from 'react';
+import { PenTool, PlayCircle, BookOpen, ArrowLeft, CheckCircle2, Feather, Flame, Sparkles, Clock, Video } from 'lucide-react';
 import { Badge } from '../ui/Badge';
+import { InstagramIcon, YoutubeIcon } from '../ui/SocialIcons';
 import { archiveData } from '../../data/archive-data';
 import { YoutubeVideo } from '../../types/archive';
 
@@ -14,7 +15,33 @@ export const LasEscritasSection: React.FC<LasEscritasSectionProps> = ({
   onBackToDashboard,
 }) => {
   const data = archiveData.competitions.find((c) => c.id === 'las-escritas')!;
-  const videos = data?.media?.youtube_videos || [];
+  const allVideos = data?.media?.youtube_videos || [];
+
+  const [activeFilter, setActiveFilter] = useState<'all' | 'finals' | 'quarters' | 'eighths' | 'cuarentena'>('all');
+
+  const filteredVideos = allVideos.filter((v) => {
+    if (activeFilter === 'finals') {
+      return v.stage?.includes('Final Escritas Beauchef') || v.stage?.includes('Semifinales Escritas Beauchef') || v.stage?.includes('3er Lugar');
+    }
+    if (activeFilter === 'quarters') {
+      return v.stage?.includes('4tos Temáticos');
+    }
+    if (activeFilter === 'eighths') {
+      return v.stage?.includes('8vos Escritas Beauchef') || v.stage?.includes('Filtros');
+    }
+    if (activeFilter === 'cuarentena') {
+      return v.stage?.includes('Cuarentena Rap');
+    }
+    return true;
+  });
+
+  const handleOpenVideo = (video: YoutubeVideo) => {
+    if (onSelectVideo) {
+      onSelectVideo(video);
+    } else {
+      window.open(video.url, '_blank');
+    }
+  };
 
   return (
     <section id="las-escritas" className="py-12 border-b border-surface-border bg-gradient-to-b from-[#1b120c] via-background to-background">
@@ -40,10 +67,30 @@ export const LasEscritasSection: React.FC<LasEscritasSectionProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-surface-border/60">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <Badge variant="amber">Formato Poético & Literario // 2020–2021</Badge>
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <Badge variant="amber">Formato Poético & Literario // 2019–2021</Badge>
               <span className="font-mono text-xs text-neutral-400">Batallas de Barras Preparadas</span>
+              
+              <a
+                href="https://www.instagram.com/rap.beauchef/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-pink-500/30 text-pink-400 font-mono text-[10px] hover:bg-pink-500/10 transition-colors"
+              >
+                <InstagramIcon className="w-3 h-3" />
+                <span>@rap.beauchef</span>
+              </a>
+              <a
+                href="https://www.youtube.com/@rapbeauchef8447"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-red-500/30 text-red-400 font-mono text-[10px] hover:bg-red-500/10 transition-colors"
+              >
+                <YoutubeIcon className="w-3 h-3" />
+                <span>@rapbeauchef8447</span>
+              </a>
             </div>
+
             <h2
               data-text="LAS ESCRITAS"
               className="glitch-text font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center gap-3"
@@ -66,55 +113,20 @@ export const LasEscritasSection: React.FC<LasEscritasSectionProps> = ({
           </div>
         </div>
 
-        {/* Curatorial Consultation Box: Addressing the user's doubt */}
-        <div className="bg-gradient-to-r from-amber-950/30 via-surface to-neutral-900 border border-amber-500/40 rounded-2xl p-6 sm:p-8 space-y-4 shadow-xl">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30">
-              <HelpCircle className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="font-mono text-base sm:text-lg font-bold text-white">
-                Dilema Curatorial: ¿Qué hacer con &ldquo;Las Escritas&rdquo;?
-              </h3>
-              <p className="font-mono text-xs text-amber-300">
-                Tres alternativas arquitectónicas para su integración permanente en el Dossier
-              </p>
-            </div>
+        {/* Genealogy Banner */}
+        <div className="bg-gradient-to-r from-amber-950/40 via-surface to-neutral-900 border border-amber-500/40 rounded-2xl p-6 sm:p-8 space-y-3 shadow-xl">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-amber-400" />
+            <span className="font-mono text-xs uppercase tracking-wider text-amber-400 font-bold">
+              Genealogía del Certamen Escrito
+            </span>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-            
-            <div className="bg-neutral-950/70 border border-amber-500/30 rounded-xl p-4 space-y-2">
-              <div className="font-mono text-xs font-bold text-amber-300 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-amber-400" />
-                Opción 1: Expediente Propio (Actual)
-              </div>
-              <p className="text-xs text-neutral-300 leading-relaxed font-sans">
-                Mantenerla como sección independiente en el menú lateral. Permite destacar la técnica literaria, las rúbricas poéticas y los videos de duelos escritos sin mezclarlos con el freestyle.
-              </p>
-            </div>
-
-            <div className="bg-neutral-950/70 border border-surface-border rounded-xl p-4 space-y-2 hover:border-neutral-700 transition-colors">
-              <div className="font-mono text-xs font-bold text-neutral-300 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-neutral-500" />
-                Opción 2: Eje en Cuarentena Rap
-              </div>
-              <p className="text-xs text-neutral-400 leading-relaxed font-sans">
-                Subsumir las escritas como un filtro de modalidad ("Freestyle vs. Escritas") dentro de Cuarentena Rap y Discord, dado que allí se originó el certamen.
-              </p>
-            </div>
-
-            <div className="bg-neutral-950/70 border border-surface-border rounded-xl p-4 space-y-2 hover:border-neutral-700 transition-colors">
-              <div className="font-mono text-xs font-bold text-neutral-300 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-neutral-500" />
-                Opción 3: Antología de Barras
-              </div>
-              <p className="text-xs text-neutral-400 leading-relaxed font-sans">
-                Transformarla en un "Laboratorio Lírico" interactivo con fragmentos transcritos de las mejores rimas, análisis de métricas y glosario de figuras literarias.
-              </p>
-            </div>
-
-          </div>
+          <h3 className="font-mono text-xl sm:text-2xl font-bold text-white">
+            Del Anfiteatro de Beauchef (2019) a la Liga Digital Internacional (2020–2021)
+          </h3>
+          <p className="text-xs sm:text-sm text-neutral-300 font-sans leading-relaxed">
+            El formato de batallas escritas nació presencialmente en el anfiteatro de la Facultad de Ciencias Físicas y Matemáticas (FCFM) con un torneo temático de personajes conceptuales, y evolucionó durante la pandemia hacia un certamen transnacional en Cuarentena Rap, conectando plumas consagradas de Chile, Argentina, Colombia, Perú y México.
+          </p>
         </div>
 
         {/* 3 Pillars of Escritas */}
@@ -158,22 +170,49 @@ export const LasEscritasSection: React.FC<LasEscritasSectionProps> = ({
 
         {/* Video Vault of Written Battles */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between pb-2 border-b border-surface-border/60">
-            <h3 className="font-mono text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
-              <PlayCircle className="w-5 h-5 text-amber-400" />
-              <span>Registro de Batallas Escritas Oficiales</span>
-            </h3>
-            <span className="font-mono text-xs text-neutral-400">
-              {videos.length} ENFRENTAMIENTOS SELECCIONADOS
-            </span>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-2 border-b border-surface-border/60">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <Video className="w-4 h-4 text-amber-400" />
+                <span className="font-mono text-xs uppercase tracking-wider text-amber-400 font-bold">
+                  Bóveda de Batallas Escritas // Registros Oficiales
+                </span>
+              </div>
+              <h3 className="font-mono text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                <span>Catálogo Audiovisual de Duelos Poéticos</span>
+              </h3>
+            </div>
+            
+            {/* Filter buttons */}
+            <div className="flex flex-wrap gap-2 text-xs font-mono">
+              {[
+                { id: 'all', label: `Todas (${allVideos.length})` },
+                { id: 'finals', label: 'Beauchef: Finales & Semis' },
+                { id: 'quarters', label: 'Beauchef: 4tos Temáticos' },
+                { id: 'eighths', label: 'Beauchef: 8vos' },
+                { id: 'cuarentena', label: 'Cuarentena Rap' },
+              ].map((filter) => (
+                <button
+                  key={filter.id}
+                  onClick={() => setActiveFilter(filter.id as any)}
+                  className={`px-3 py-1.5 rounded-lg border transition-all ${
+                    activeFilter === filter.id
+                      ? 'bg-amber-500/20 border-amber-500 text-amber-300 font-bold shadow-glow-amber'
+                      : 'bg-surface border-surface-border text-neutral-400 hover:text-white hover:border-neutral-700'
+                  }`}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {videos.map((vid) => (
+            {filteredVideos.map((vid) => (
               <div
                 key={vid.id}
-                onClick={() => onSelectVideo ? onSelectVideo(vid) : window.open(vid.url, '_blank')}
-                className="group cursor-pointer bg-surface border border-surface-border rounded-xl overflow-hidden hover:border-amber-500/60 hover:shadow-glow-amber transition-all duration-300 flex flex-col"
+                onClick={() => handleOpenVideo(vid)}
+                className="group cursor-pointer bg-surface border border-surface-border rounded-xl overflow-hidden hover:border-amber-500/60 hover:shadow-glow-amber transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="relative aspect-video bg-neutral-950 overflow-hidden flex items-center justify-center">
                   <img
@@ -186,9 +225,19 @@ export const LasEscritasSection: React.FC<LasEscritasSectionProps> = ({
                       <PlayCircle className="w-6 h-6" />
                     </div>
                   </div>
-                  <div className="absolute bottom-2 left-2 bg-black/80 px-2 py-0.5 rounded font-mono text-[10px] text-amber-400 border border-neutral-800">
-                    {vid.stage}
-                  </div>
+                  {vid.stage && (
+                    <div className="absolute top-2.5 left-2.5">
+                      <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-black/80 text-amber-400 border border-amber-500/30">
+                        {vid.stage}
+                      </span>
+                    </div>
+                  )}
+                  {vid.duration && (
+                    <div className="absolute bottom-2.5 right-2.5 bg-black/85 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-mono text-neutral-200 border border-white/10 flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-amber-400" />
+                      <span>{vid.duration}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-4 flex-1 flex flex-col justify-between space-y-2">
@@ -196,8 +245,8 @@ export const LasEscritasSection: React.FC<LasEscritasSectionProps> = ({
                     {vid.title}
                   </h4>
                   <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 pt-2 border-t border-surface-border/40">
-                    <span>{vid.duration}</span>
                     <span className="text-amber-400 group-hover:underline">Ver en YouTube &rarr;</span>
+                    <span className="text-neutral-500 text-[10px]">@rapbeauchef8447</span>
                   </div>
                 </div>
               </div>
