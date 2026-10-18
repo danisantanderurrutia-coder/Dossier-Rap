@@ -26,7 +26,8 @@ export const CRTOverlay: React.FC<CRTOverlayProps> = ({ enabled }) => {
         <span className="w-2 h-2 rounded-full bg-crt-red animate-ping" />
         <span className="text-crt-red font-bold">REC ●</span>
         <span className="text-neutral-500">|</span>
-        <span className="text-neutral-400">CH 03 // DANIEL_SANTANDER</span>
+        <span className="text-neutral-400">CH 03 // DANIEL_S_SANTANDER_URRUTIA</span>
+
       </div>
 
       {/* Top Right: VHS Tape Play Status */}
