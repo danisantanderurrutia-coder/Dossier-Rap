@@ -73,7 +73,7 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       label: 'Rap Beauchef (Presencial)',
       shortLabel: 'Beauchef',
       tagline: 'Anfiteatro FCFM · Matriz Fundacional',
-      logo: './logos/rap-beauchef.jpg',
+      logo: './logos/rap-beauchef.png',
       accentColor: 'text-crt-cyan',
       glowColor: 'shadow-cyan-500/40',
       borderColor: 'border-cyan-500',
@@ -257,6 +257,15 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                           <span className="font-mono text-[6.5px] tracking-widest text-neutral-400 uppercase font-semibold leading-none">
                             DUELO POÉTICO
                           </span>
+                        </div>
+                      ) : item.id === 'rap-beauchef' ? (
+                        /* Logo Oficial Rap Beauchef: Tag negro original sobre fondo blanco sticker */
+                        <div className="w-full h-full p-1.5 flex items-center justify-center bg-white rounded-xl select-none group-hover:scale-105 transition-transform">
+                          <img
+                            src="./logos/rap-beauchef.png"
+                            alt="Rap Beauchef"
+                            className="w-full h-full object-contain filter drop-shadow-sm"
+                          />
                         </div>
                       ) : (
                         /* Imagen de logo original limpia, sin dibujos superpuestos */

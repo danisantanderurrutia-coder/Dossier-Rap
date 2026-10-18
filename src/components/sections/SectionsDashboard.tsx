@@ -30,7 +30,7 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       period: '2019–2021',
       type: 'Presencial / Anfiteatro FCFM',
       description: 'Liga matriz universitaria nacida en el anfiteatro de la FCFM (U. de Chile). Círculo fundacional del que emergen las versiones territoriales (Rap Libre) y literarias (Las Escritas).',
-      logo: './logos/rap-beauchef.jpg',
+      logo: './logos/rap-beauchef.png',
       accentColor: 'text-crt-cyan',
       borderColor: 'border-cyan-500/30',
       hoverBorder: 'hover:border-cyan-400',
@@ -171,6 +171,15 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
                         <span className="font-mono text-[6px] tracking-widest text-neutral-400 uppercase font-semibold leading-none">
                           DUELO POÉTICO
                         </span>
+                      </div>
+                    ) : section.id === 'rap-beauchef' ? (
+                      /* Logo Oficial Rap Beauchef: Tag negro original sobre cápsula blanca sticker */
+                      <div className="w-full h-full p-1.5 flex items-center justify-center bg-white rounded-xl select-none group-hover:scale-105 transition-transform shadow-sm">
+                        <img
+                          src="./logos/rap-beauchef.png"
+                          alt="Rap Beauchef"
+                          className="w-full h-full object-contain filter drop-shadow-sm"
+                        />
                       </div>
                     ) : (
                       /* Imagen de logo original limpia, sin dibujos superpuestos */

@@ -56,43 +56,59 @@ export const RapBeauchefSection: React.FC<RapBeauchefSectionProps> = ({
         )}
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-surface-border/60">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <Badge variant="cyan">Competencias Presenciales // 2019–2020</Badge>
-              <span className="font-mono text-xs text-neutral-400">Anfiteatro FCFM Universidad de Chile</span>
-              
-              {/* Direct Social Sources */}
-              <a
-                href="https://www.instagram.com/rap.beauchef/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-pink-500/30 text-pink-400 font-mono text-[10px] hover:bg-pink-500/10 transition-colors"
-              >
-                <InstagramIcon className="w-3 h-3" />
-                <span>@rap.beauchef</span>
-              </a>
-              <a
-                href="https://www.youtube.com/@rapbeauchef8447"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-red-500/30 text-red-400 font-mono text-[10px] hover:bg-red-500/10 transition-colors"
-              >
-                <YoutubeIcon className="w-3 h-3" />
-                <span>@rapbeauchef8447</span>
-              </a>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-surface-border/60">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+            {/* Logo Oficial Rap Beauchef (Cápsula Blanca con Tag Negro Original) */}
+            <div className="relative group shrink-0">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white p-2 border-2 border-cyan-400 shadow-[0_0_25px_rgba(6,182,212,0.35)] flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
+                <img
+                  src="./logos/rap-beauchef.png"
+                  alt="Logo Oficial Rap Beauchef"
+                  className="w-full h-full object-contain filter drop-shadow-sm"
+                />
+              </div>
+              <span className="absolute -bottom-2 -right-1 font-mono text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-neutral-900 border border-cyan-500/50 text-cyan-300 shadow">
+                OFICIAL
+              </span>
             </div>
 
-            <h2
-              data-text="RAP BEAUCHEF"
-              className="glitch-text font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center gap-3"
-            >
-              <Mic2 className="w-9 h-9 text-crt-cyan inline" />
-              RAP BEAUCHEF (PRESENCIAL)
-            </h2>
-            <p className="text-xs sm:text-sm text-neutral-400 mt-2 font-mono">
-              {data.subtitle}
-            </p>
+            <div>
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <Badge variant="cyan">Liga Matriz Universitaria // 2019–2020</Badge>
+                <span className="font-mono text-xs text-neutral-400">Anfiteatro FCFM Universidad de Chile</span>
+                
+                {/* Direct Social Sources */}
+                <a
+                  href="https://www.instagram.com/rap.beauchef/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-pink-500/30 text-pink-400 font-mono text-[10px] hover:bg-pink-500/10 transition-colors"
+                >
+                  <InstagramIcon className="w-3 h-3" />
+                  <span>@rap.beauchef</span>
+                </a>
+                <a
+                  href="https://www.youtube.com/@rapbeauchef8447"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-red-500/30 text-red-400 font-mono text-[10px] hover:bg-red-500/10 transition-colors"
+                >
+                  <YoutubeIcon className="w-3 h-3" />
+                  <span>@rapbeauchef8447</span>
+                </a>
+              </div>
+
+              <h2
+                data-text="RAP BEAUCHEF"
+                className="glitch-text font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center gap-3"
+              >
+                <Mic2 className="w-9 h-9 text-crt-cyan inline" />
+                RAP BEAUCHEF (PRESENCIAL)
+              </h2>
+              <p className="text-xs sm:text-sm text-neutral-400 mt-2 font-mono">
+                {data.subtitle}
+              </p>
+            </div>
           </div>
 
           <div className="bg-surface border border-cyan-500/30 rounded-xl p-5 max-w-md shadow-glow-cyan">

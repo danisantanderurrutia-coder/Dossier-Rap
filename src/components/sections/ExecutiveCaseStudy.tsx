@@ -332,39 +332,29 @@ Contacto / Archivo Web: Disponible en el Dossier Interactivo de Competencias de 
               {/* Main Artwork Showcase Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                {/* Visual Artwork Composition: 2 Clean Aligned Gallery Frames */}
-                <div className={`lg:col-span-7 ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Primary Artwork Frame */}
-                    <div className="bg-white p-3 rounded-2xl border border-neutral-300 shadow-md hover:shadow-lg transition-all duration-300 group">
-                      <div className="aspect-square rounded-xl overflow-hidden bg-neutral-100 relative">
-                        <img
-                          src={work.heroImage}
-                          alt={work.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="pt-2.5 pb-0.5 px-1 flex items-center justify-between text-[11px] font-mono text-neutral-500">
-                        <span className="font-semibold text-neutral-800">Pieza Principal</span>
-                        <span>{work.period}</span>
-                      </div>
-                    </div>
-
-                    {/* Secondary Artwork Frame */}
-                    <div className="bg-white p-3 rounded-2xl border border-neutral-300 shadow-md hover:shadow-lg transition-all duration-300 group">
-                      <div className="aspect-square rounded-xl overflow-hidden bg-neutral-100 relative">
-                        <img
-                          src={work.secondaryImage}
-                          alt={work.production}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="pt-2.5 pb-0.5 px-1 flex items-center justify-between text-[11px] font-mono text-neutral-500">
-                        <span className="font-semibold text-neutral-800">Registro de Archivo</span>
-                        <span>{work.production}</span>
-                      </div>
+                {/* Visual Artwork Composition: Hero behind + Secondary Stamp overlapping on top */}
+                <div className={`lg:col-span-7 relative pb-6 pr-4 sm:pb-8 sm:pr-6 ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  
+                  {/* Primary Canvas with Gallery Frame & Soft Shadow */}
+                  <div className="relative bg-white p-3 sm:p-4 rounded-2xl border border-neutral-300 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+                    <div className="aspect-[4/3] rounded-xl overflow-hidden bg-neutral-100">
+                      <img
+                        src={work.heroImage}
+                        alt={work.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
+
+                  {/* Secondary Stamped Image Overlapping on Top */}
+                  <div className="absolute bottom-1 right-0 sm:bottom-0 sm:right-0 w-32 sm:w-44 md:w-48 aspect-square bg-white p-2 sm:p-2.5 rounded-xl border border-neutral-300 shadow-2xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 z-20">
+                    <img
+                      src={work.secondaryImage}
+                      alt={work.production}
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                  </div>
+
                 </div>
 
                 {/* Editorial Concept & Curation Text */}
