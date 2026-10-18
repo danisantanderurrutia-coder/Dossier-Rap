@@ -54,8 +54,9 @@ export const ArchivalHeader: React.FC<ArchivalHeaderProps> = ({
               </span>
             </div>
             <p className="font-mono text-[10px] text-neutral-400 tracking-wide hidden md:block">
-              Curaduría & Dirección: Daniel Santander
+              Curaduría & Dirección: Daniel S. Santander Urrutia
             </p>
+
           </div>
         </button>
 

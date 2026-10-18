@@ -16,7 +16,7 @@ export const HeroManifesto: React.FC<HeroManifestoProps> = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Title */}
-        <div className="max-w-4xl mb-8">
+        <div className="max-w-4xl mb-8 space-y-3">
           <h1
             data-text="HIP-HOP COMO RESISTENCIA & CATARSIS"
             className="glitch-text font-mono text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
@@ -26,6 +26,11 @@ export const HeroManifesto: React.FC<HeroManifestoProps> = () => {
               RESISTENCIA & CATARSIS
             </span>
           </h1>
+
+          <p className="crt-subtext font-mono text-xs sm:text-sm text-crt-cyan uppercase tracking-wider">
+            Expedientes Culturales & Archivo Histórico // Dirección & Curaduría: Daniel S. Santander Urrutia
+          </p>
+
         </div>
 
         {/* 4 Impact Metrics Cards: concise and fast to scan */}

@@ -15,7 +15,8 @@ export const Footer: React.FC = () => {
           </div>
           <p className="text-xs text-neutral-400 max-w-xl leading-relaxed">
             Curaduría, dirección conceptual, producción técnica y arquitectura de comunidades dirigida por{' '}
-            <strong className="text-neutral-200">Daniel Santander</strong>. Documentación histórica de resistencia cultural, autogestión y soberanía lírica en Chile y Latinoamérica.
+            <strong className="text-neutral-200">Daniel S. Santander Urrutia</strong>. Documentación histórica de resistencia cultural, autogestión y soberanía lírica en Chile y Latinoamérica.
+
           </p>
         </div>
 
@@ -55,8 +56,9 @@ export const Footer: React.FC = () => {
 
       <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-surface-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-neutral-400">
         <div>
-          © 2019–2021 Daniel Santander · Todos los derechos artísticos y de registro reservados.
+          © 2019–2021 Daniel S. Santander Urrutia · Todos los derechos artísticos y de registro reservados.
         </div>
+
         <div className="flex items-center gap-1 text-neutral-400">
           Construido con <Heart className="w-3 h-3 text-rose-500 fill-rose-500 inline mx-0.5" /> para la cultura hip-hop y la memoria colectiva.
         </div>

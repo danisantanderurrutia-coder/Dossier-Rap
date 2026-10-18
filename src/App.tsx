@@ -11,6 +11,7 @@ import { RapLibreSection } from './components/sections/RapLibreSection';
 import { LasEscritasSection } from './components/sections/LasEscritasSection';
 import { ExecutiveCaseStudy } from './components/sections/ExecutiveCaseStudy';
 import { PosterGallery } from './components/media/PosterGallery';
+import { SectionsDashboard } from './components/sections/SectionsDashboard';
 import { YoutubeVideo } from './types/archive';
 
 export const App: React.FC = () => {
@@ -60,11 +61,14 @@ export const App: React.FC = () => {
           <div>
             {/* View 1: DASHBOARD CENTRAL (Landing General) */}
             {activeTab === 'dashboard' && (
-              <div className="space-y-12">
+              <div className="space-y-16">
                 {/* Hero Manifesto & Impact Metrics */}
                 <HeroManifesto />
 
-                {/* Bóveda Visual y Afiches de Culto */}
+                {/* Dashboard de los 6 Dispositivos Culturales */}
+                <SectionsDashboard onSelectTab={handleSelectTab} />
+
+                {/* Registro Presencial: Fotografías en Vivo */}
                 <PosterGallery initialCompetitionFilter="all" />
               </div>
             )}
