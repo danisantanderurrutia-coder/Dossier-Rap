@@ -240,18 +240,6 @@ export const CuarentenaCinematicView: React.FC<CuarentenaCinematicViewProps> = (
         isSquare: true,
         instagramUrl: 'https://www.instagram.com/p/CBCA5DGFBwO/',
       });
-      list.push({
-        id: 'nenewladi-production-card',
-        title: 'Nene Wladi · Beatmaker & Producción Urbana',
-        tag: 'BEATMAKER / ARTISTA OFICIAL',
-        imageUrl: './covers/instagram/CGBnB36jLL8.jpg',
-        league: 'Producción Musical & Ecosistema',
-        region: 'Chile',
-        desc: 'Compositor e instrumentista urbano del circuito. Haz clic en el enlace para escuchar sus canciones y lanzamientos oficiales en Instagram (@nenewladi).',
-        isSquare: true,
-        instagramUrl: 'https://www.instagram.com/nenewladi/',
-        externalUrl: 'https://www.instagram.com/nenewladi/',
-      });
 
       // Filter screenshots (All vertical phone recordings)
       const keyFilters = [

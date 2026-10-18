@@ -153,7 +153,6 @@ export const cuarentenaPortals: CuarentenaPortal[] = [
         'Jorge Dolores (Atmósferas y Loops de Cuarentena)',
         'Beatime (Producción Semifinal Niggy vs Pimc)',
         'Vuran (Producción Semifinal Crizzo vs Chologuapo)',
-        'Nene Wladi (Producción Urbana & Lanzamientos)',
       ],
       discordChannels: [
         'discord.gg/w5wew5z (Servidor Oficial QRTN)',
