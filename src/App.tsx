@@ -4,11 +4,9 @@ import { RightHangingMenu, SectionTab } from './components/layout/RightHangingMe
 import { Footer } from './components/layout/Footer';
 import { HeroManifesto } from './components/sections/HeroManifesto';
 import { CuarentenaRapSection } from './components/sections/CuarentenaRapSection';
-import { RapBeauchefSection } from './components/sections/RapBeauchefSection';
+import { RapBeauchefSection, BeauchefSubTab } from './components/sections/RapBeauchefSection';
 import { DuenasDeLaVozSection } from './components/sections/DuenasDeLaVozSection';
 import { DiscordRapBeauchefSection } from './components/sections/DiscordRapBeauchefSection';
-import { RapLibreSection } from './components/sections/RapLibreSection';
-import { LasEscritasSection } from './components/sections/LasEscritasSection';
 import { ExecutiveCaseStudy } from './components/sections/ExecutiveCaseStudy';
 import { PosterGallery } from './components/media/PosterGallery';
 import { SectionsDashboard } from './components/sections/SectionsDashboard';
@@ -17,15 +15,29 @@ import { YoutubeVideo } from './types/archive';
 export const App: React.FC = () => {
   const [activeMode, setActiveMode] = useState<'dossier' | 'executive'>('dossier');
   const [activeTab, setActiveTab] = useState<SectionTab>('dashboard');
+  const [beauchefSubTab, setBeauchefSubTab] = useState<BeauchefSubTab>('presencial');
 
   const handleSelectVideo = (video: YoutubeVideo) => {
     // Abrir video directamente en nueva pestaña si se selecciona desde un expediente
     window.open(video.url, '_blank');
   };
 
-  const handleSelectTab = (tab: SectionTab) => {
+  const handleSelectTab = (tab: SectionTab, subTab?: BeauchefSubTab) => {
     setActiveMode('dossier');
-    setActiveTab(tab);
+    if (tab === 'las-escritas') {
+      setActiveTab('rap-beauchef');
+      setBeauchefSubTab('escritas');
+    } else if (tab === 'rap-libre') {
+      setActiveTab('rap-beauchef');
+      setBeauchefSubTab('rap-libre');
+    } else {
+      setActiveTab(tab);
+      if (subTab) {
+        setBeauchefSubTab(subTab);
+      } else if (tab === 'rap-beauchef') {
+        setBeauchefSubTab('presencial');
+      }
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -73,9 +85,10 @@ export const App: React.FC = () => {
               </div>
             )}
 
-            {/* View 2: RAP BEAUCHEF (Presencial con Fotos y Videos) */}
+            {/* View 2: RAP BEAUCHEF (Matriz Cultural: El Presencial, Las Escritas, Rap Libre) */}
             {activeTab === 'rap-beauchef' && (
               <RapBeauchefSection
+                initialSubTab={beauchefSubTab}
                 onSelectVideo={handleSelectVideo}
                 onBackToDashboard={handleBackToDashboard}
               />
@@ -100,21 +113,6 @@ export const App: React.FC = () => {
             {/* View 5: CUARENTENA RAP (Cinemática Limpia) */}
             {activeTab === 'cuarentena-rap' && (
               <CuarentenaRapSection
-                onSelectVideo={handleSelectVideo}
-                onBackToDashboard={handleBackToDashboard}
-              />
-            )}
-
-            {/* View 6: RAP LIBRE */}
-            {activeTab === 'rap-libre' && (
-              <RapLibreSection
-                onBackToDashboard={handleBackToDashboard}
-              />
-            )}
-
-            {/* View 7: LAS ESCRITAS */}
-            {activeTab === 'las-escritas' && (
-              <LasEscritasSection
                 onSelectVideo={handleSelectVideo}
                 onBackToDashboard={handleBackToDashboard}
               />
