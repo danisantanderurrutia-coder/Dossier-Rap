@@ -8,6 +8,7 @@ import { RapBeauchefSection, BeauchefSubTab } from './components/sections/RapBea
 import { DuenasDeLaVozSection } from './components/sections/DuenasDeLaVozSection';
 import { DiscordRapBeauchefSection } from './components/sections/DiscordRapBeauchefSection';
 import { ExecutiveCaseStudy } from './components/sections/ExecutiveCaseStudy';
+import { MarcoTeoricoSection } from './components/sections/MarcoTeoricoSection';
 import { PosterGallery } from './components/media/PosterGallery';
 import { SectionsDashboard } from './components/sections/SectionsDashboard';
 import { YoutubeVideo } from './types/archive';
@@ -67,7 +68,7 @@ export const App: React.FC = () => {
       <main className="flex-1">
         {activeMode === 'executive' ? (
           <div className="animate-fadeIn bg-[#fbfbfa]">
-            <ExecutiveCaseStudy />
+            <ExecutiveCaseStudy onNavigateToMarcoTeorico={() => handleSelectTab('marco-teorico')} />
           </div>
         ) : (
           <div>
@@ -75,7 +76,7 @@ export const App: React.FC = () => {
             {activeTab === 'dashboard' && (
               <div className="space-y-16">
                 {/* Hero Manifesto & Impact Metrics */}
-                <HeroManifesto />
+                <HeroManifesto onNavigateToMarcoTeorico={() => handleSelectTab('marco-teorico')} />
 
                 {/* Dashboard de los 6 Dispositivos Culturales */}
                 <SectionsDashboard onSelectTab={handleSelectTab} />
@@ -114,6 +115,13 @@ export const App: React.FC = () => {
             {activeTab === 'cuarentena-rap' && (
               <CuarentenaRapSection
                 onSelectVideo={handleSelectVideo}
+                onBackToDashboard={handleBackToDashboard}
+              />
+            )}
+
+            {/* View 6: MARCO TEÓRICO (Investigación Académica FCFM U. de Chile) */}
+            {activeTab === 'marco-teorico' && (
+              <MarcoTeoricoSection
                 onBackToDashboard={handleBackToDashboard}
               />
             )}

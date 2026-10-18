@@ -1,13 +1,14 @@
 import React from 'react';
-import { Users, Disc3, Globe2, HeartHandshake } from 'lucide-react';
+import { Users, Disc3, Globe2, HeartHandshake, BookOpen, ArrowRight, GraduationCap } from 'lucide-react';
 import { MetricCard } from '../ui/MetricCard';
 
 interface HeroManifestoProps {
   onExploreClick?: () => void;
   onExecutiveClick?: () => void;
+  onNavigateToMarcoTeorico?: () => void;
 }
 
-export const HeroManifesto: React.FC<HeroManifestoProps> = () => {
+export const HeroManifesto: React.FC<HeroManifestoProps> = ({ onNavigateToMarcoTeorico }) => {
   return (
     <section className="relative overflow-hidden pt-12 pb-16 border-b border-surface-border">
       {/* Background ambient lighting */}
@@ -49,6 +50,41 @@ export const HeroManifesto: React.FC<HeroManifestoProps> = () => {
             Expedientes Culturales & Archivo Histórico // Dirección & Curaduría: Daniel S. Santander Urrutia
           </p>
 
+          {/* Banner de Marco Teórico Académico FCFM U. de Chile */}
+          <div className="mt-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-sky-950/40 via-surface/80 to-surface border border-sky-500/30 backdrop-blur-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-[0_4px_25px_rgba(14,165,233,0.08)]">
+            <div className="flex items-start gap-3.5">
+              <div className="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 shrink-0 mt-0.5">
+                <GraduationCap className="w-6 h-6" />
+              </div>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-400/30">
+                    Investigación Socioeconómica FCFM U. de Chile
+                  </span>
+                  <span className="font-mono text-[11px] text-neutral-400">
+                    Cátedra Socioeconomía Latinoamericana
+                  </span>
+                </div>
+                <h2 className="text-sm sm:text-base font-bold text-white font-sans">
+                  Marco Teórico: «Desarrollo, Rap y Evolución: Cultura Urbana en la Construcción de Sociedad»
+                </h2>
+                <p className="text-xs text-neutral-300 font-sans max-w-2xl leading-relaxed">
+                  Toda esta obra está concebida bajo el paradigma de <strong>Desarrollo a Escala Humana (Max-Neef)</strong> y los <strong>7 principios cooperativos</strong>: el hip-hop como catalizador de identidad, subsistencia comunitaria y economía solidaria frente a la industria tradicional.
+                </p>
+              </div>
+            </div>
+
+            {onNavigateToMarcoTeorico && (
+              <button
+                onClick={onNavigateToMarcoTeorico}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 hover:text-white border border-sky-400/40 font-mono text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:shadow-[0_0_15px_rgba(56,189,248,0.3)] shrink-0 group self-end md:self-auto"
+              >
+                <BookOpen className="w-4 h-4 text-sky-400 group-hover:scale-110 transition-transform" />
+                <span>Explorar Marco Teórico</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* 4 Impact Metrics Cards: concise and fast to scan */}

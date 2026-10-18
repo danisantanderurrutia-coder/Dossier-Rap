@@ -11,7 +11,8 @@ export type SectionTab =
   | 'discord-rap-beauchef' 
   | 'cuarentena-rap' 
   | 'rap-libre' 
-  | 'las-escritas';
+  | 'las-escritas'
+  | 'marco-teorico';
 
 interface RightHangingMenuProps {
   activeTab: SectionTab;
@@ -116,6 +117,18 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       badge: 'Oficial QRTN',
       badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/50',
     },
+    {
+      id: 'marco-teorico',
+      label: 'Marco Teórico (FCFM)',
+      shortLabel: 'Marco Teórico',
+      tagline: 'Ensayo Académico & Socioeconomía',
+      logo: './academic/fcfm-uchile-logo.jpg',
+      accentColor: 'text-sky-400',
+      glowColor: 'shadow-sky-500/40',
+      borderColor: 'border-sky-500',
+      badge: 'Paper FCFM',
+      badgeColor: 'bg-sky-500/10 text-sky-300 border-sky-500/30',
+    },
   ];
 
   return (
@@ -166,8 +179,8 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                   </span>
                 </div>
               </div>
-              <span className="font-mono text-xs bg-neutral-900 text-crt-amber px-2.5 py-1 rounded-md border border-neutral-800 font-bold">
-                5 Expedientes
+              <span className="font-mono text-xs bg-neutral-900 text-sky-400 px-2.5 py-1 rounded-md border border-neutral-800 font-bold">
+                6 Módulos
               </span>
             </div>
           )}
@@ -206,6 +219,15 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                             src="./logos/rap-r-logo.png"
                             alt="Dossier Rap Isotipo"
                             className="w-full h-full object-cover filter drop-shadow-[0_0_10px_rgba(251,191,36,0.7)] group-hover:scale-110 transition-transform"
+                          />
+                        </div>
+                      ) : item.id === 'marco-teorico' ? (
+                        /* Sello Académico FCFM - Universidad de Chile */
+                        <div className="w-full h-full p-2 flex items-center justify-center bg-white rounded-xl select-none group-hover:scale-105 transition-transform overflow-hidden shadow-inner">
+                          <img
+                            src="./academic/fcfm-uchile-logo.jpg"
+                            alt="FCFM Universidad de Chile"
+                            className="w-full h-full object-contain"
                           />
                         </div>
                       ) : item.id === 'rap-beauchef' ? (

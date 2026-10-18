@@ -8,7 +8,13 @@ import {
   Users,
   Scale,
   Terminal,
+  BookOpen,
+  ArrowRight,
 } from 'lucide-react';
+
+interface ExecutiveCaseStudyProps {
+  onNavigateToMarcoTeorico?: () => void;
+}
 
 interface MacroWork {
   number: string;
@@ -34,7 +40,7 @@ interface TransferableCompetency {
   badge: string;
 }
 
-export const ExecutiveCaseStudy: React.FC = () => {
+export const ExecutiveCaseStudy: React.FC<ExecutiveCaseStudyProps> = ({ onNavigateToMarcoTeorico }) => {
   const [copied, setCopied] = useState(false);
 
   // Las Tres Macro-Obras auténticas reflejadas en la plataforma
@@ -235,6 +241,57 @@ Contacto / Archivo Web: Disponible en el Dossier Interactivo de Competencias de 
             </button>
           </div>
 
+        </div>
+
+        {/* ========================================================================= */}
+        {/* BANNER MARCO TEÓRICO ACADÉMICO (FCFM Universidad de Chile)               */}
+        {/* ========================================================================= */}
+        <div className="bg-white border border-neutral-300 rounded-2xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-2 h-full bg-sky-600" />
+          
+          <div className="flex items-start gap-4 pl-2">
+            <div className="w-16 h-16 rounded-xl overflow-hidden border border-neutral-200 bg-white p-1 shrink-0 flex items-center justify-center shadow-sm">
+              <img
+                src="./academic/fcfm-uchile-logo.jpg"
+                alt="FCFM U. de Chile"
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-sky-100 text-sky-800 border border-sky-200">
+                  MARCO TEÓRICO FUNDACIONAL
+                </span>
+                <span className="font-mono text-xs text-neutral-500 font-semibold">
+                  FCFM Universidad de Chile · Socioeconomía Latinoamericana
+                </span>
+              </div>
+
+              <h2 className="text-base sm:text-lg font-bold text-neutral-950 font-serif leading-snug">
+                «Desarrollo, Rap y Evolución: Cultura Urbana en la Construcción de Sociedad»
+              </h2>
+
+              <p className="text-xs sm:text-sm text-neutral-600 font-sans max-w-2xl leading-relaxed">
+                Investigación académica que fundamenta toda esta obra bajo el paradigma de <strong>Desarrollo a Escala Humana (Max-Neef)</strong> y los <strong>7 principios cooperativos internacionales</strong>, analizando la contracultura urbana frente a la precariedad de la industria discográfica tradicional.
+              </p>
+
+              <div className="font-mono text-[11px] text-neutral-500 pt-0.5">
+                Autores: <strong>Daniel Santander U.</strong> & <strong>Bruno Severi</strong> x Rap Beauchef · Prof. Dr. Nicolás Núñez Gómez
+              </div>
+            </div>
+          </div>
+
+          {onNavigateToMarcoTeorico && (
+            <button
+              onClick={onNavigateToMarcoTeorico}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 shrink-0 group self-end md:self-auto"
+            >
+              <BookOpen className="w-4 h-4 text-sky-200 group-hover:scale-110 transition-transform" />
+              <span>Ver Marco Teórico</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </button>
+          )}
         </div>
 
         {/* ========================================================================= */}
