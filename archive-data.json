@@ -1,0 +1,156 @@
+{
+  "project": "Dossier Inmersivo: Competencias de Rap & Archivo Hip-Hop",
+  "curator": "Daniel Santander",
+  "roles": [
+    "Director Creativo",
+    "Productor Ejecutivo",
+    "Arquitecto de Comunidades Digitales",
+    "Diseñador de Rúbricas y Ética Competitiva"
+  ],
+  "timeline": "2019 - 2021",
+  "competitions": [
+    {
+      "id": "cuarentena-rap",
+      "name": "Cuarentena Rap",
+      "subtitle": "Liga Multiplataforma en Confinamiento & Dispositivo Socio-Artístico",
+      "years": "2020 - 2021",
+      "concept": {
+        "title": "La Muerte Simbólica y el Viaje hacia la Liberación",
+        "summary": "Durante los confinamientos por COVID-19, Cuarentena Rap transformó el trauma del aislamiento en un certamen poético-competitivo conceptual. Los emcees ingresaban simbólicamente muertos (confinados e inactivos), enfrentaban sus crisis en la Fase de Karmas y alcanzaban la catarsis y liberación a través del arte colectivo.",
+        "phases": [
+          {
+            "phase": "01. Filtros Clasificatorios",
+            "desc": "Audiciones masivas a ciegas con cientos de postulantes evaluados por letristas consagrados de la escena latinoamericana."
+          },
+          {
+            "phase": "02. Fase de Tumbas",
+            "desc": "Ruptura del silencio. Los emcees despiertan del letargo pandémico y reactivan su lírica en el cuadrilátero virtual."
+          },
+          {
+            "phase": "03. Fase de Karmas",
+            "desc": "El núcleo narrativo: purga poética de duelos, conflictos personales, encierro y angustia estructural, sustituyendo la rima vacía por contenido sustantivo."
+          },
+          {
+            "phase": "04. Semifinales y Liberación (Gran Final)",
+            "desc": "Clímax competitivo con duelos escritos de alto nivel técnico ante miles de espectadores simultáneos en YouTube y Twitch, coronando a Crizzo."
+          }
+        ]
+      },
+      "pillars": [
+        {
+          "name": "MCing / Freestyle & Batallas Escritas",
+          "details": "Rúbricas de evaluación transparentes ponderando criterio lírico, flow, métricas y coherencia conceptual."
+        },
+        {
+          "name": "Breaking",
+          "details": "Torneo virtual de B-Boys y B-Girls evaluados en video de alto framerate para vencer el confinamiento físico."
+        },
+        {
+          "name": "Beatmaking",
+          "details": "Showcase y batalla de beatmakers produciendo instrumentales boom-bap y texturas exclusivas para cada etapa."
+        },
+        {
+          "name": "Beatboxing",
+          "details": "Torneo de percusión vocal transformando el micrófono en sintetizadores y baterías en vivo."
+        }
+      ],
+      "network": "Federación de ligas y plazas de Chile, Argentina, Colombia, Perú y México con cuerpo de jueces internacionales.",
+      "media": {
+        "youtube_videos": [
+          {
+            "title": "Video Oficial de Promoción & Manifiesto Conceptual",
+            "id": "B2XrNxHxwrA",
+            "url": "https://www.youtube.com/watch?v=B2XrNxHxwrA"
+          },
+          {
+            "title": "Cuartos de Final: Chologuapo vs Johatsu",
+            "id": "YZhhS7l_04Q",
+            "url": "https://www.youtube.com/watch?v=YZhhS7l_04Q"
+          },
+          {
+            "title": "Cuartos de Final: Pimc vs Pronoia",
+            "id": "gD-IergtRag",
+            "url": "https://www.youtube.com/watch?v=gD-IergtRag"
+          },
+          {
+            "title": "Cuartos de Final: Johatsu vs Chologuapo",
+            "id": "QcHRipCLj_0",
+            "url": "https://www.youtube.com/watch?v=QcHRipCLj_0"
+          },
+          {
+            "title": "Cuartos de Final: Pronoia vs Pimc",
+            "id": "bIAlFlbqG4o",
+            "url": "https://www.youtube.com/watch?v=bIAlFlbqG4o"
+          },
+          {
+            "title": "Fase de Karmas: Entrega 1",
+            "id": "I7Kiv8B5-8I",
+            "url": "https://www.youtube.com/watch?v=I7Kiv8B5-8I"
+          },
+          {
+            "title": "Fase de Karmas: Entrega 2",
+            "id": "G1LEt3FDWBY",
+            "url": "https://www.youtube.com/watch?v=G1LEt3FDWBY"
+          },
+          {
+            "title": "Fase de Karmas: Entrega 3",
+            "id": "OBdrOnFkQTU",
+            "url": "https://www.youtube.com/watch?v=OBdrOnFkQTU"
+          },
+          {
+            "title": "Semifinales: Transmisión Oficial",
+            "id": "l2PwaGDStx8",
+            "url": "https://www.youtube.com/watch?v=l2PwaGDStx8"
+          },
+          {
+            "title": "Semifinal: Chologuapo vs Crizzo",
+            "id": "eQ8o4xRh2cI",
+            "url": "https://www.youtube.com/watch?v=eQ8o4xRh2cI"
+          },
+          {
+            "title": "Semifinal: Crizzo vs Chologuapo",
+            "id": "k5gCKdOxmYU",
+            "url": "https://www.youtube.com/watch?v=k5gCKdOxmYU"
+          },
+          {
+            "title": "Semifinal: Niggy vs Pimc",
+            "id": "x_M7yiXcSAg",
+            "url": "https://www.youtube.com/watch?v=x_M7yiXcSAg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rap-beauchef",
+      "name": "Rap Beauchef",
+      "subtitle": "Arena Universitaria en Vivo & Ecosistema Discord Internacional",
+      "years": "2019 - 2021",
+      "venue": "Anfiteatro FCFM (Facultad de Ciencias Físicas y Matemáticas, Universidad de Chile)",
+      "production": {
+        "live": "Montaje técnico en anfiteatro con sonido autogestionado, microfonía dinámica, cobertura multicámara y convocatorias de cientos de estudiantes y emcees underground.",
+        "women_leadership": "Creación de Dueñas de la Voz, certamen femenino pionero que visibilizó y consagró a mujeres músicas, freestylers y poetas en la escena universitaria.",
+        "digital_infrastructure": "Servidor de Discord automatizado pionero en pandemia con +12.000 miembros, canales de baja latencia para batallas en tiempo real y transmisión internacional."
+      },
+      "media": {
+        "youtube_videos": [
+          {
+            "title": "QUEENA - Final Dueñas de la Voz (Registro Oficial)",
+            "id": "NcDejj3NKXo",
+            "url": "https://www.youtube.com/watch?v=NcDejj3NKXo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rap-libre",
+      "name": "Rap Libre",
+      "subtitle": "Conquista del Espacio Público, Ayuda Comunitaria & Resistencia Popular",
+      "years": "2019 - 2020",
+      "venue": "Plazas y Parques Urbanos de Santiago de Chile",
+      "production": {
+        "social_purpose": "Transformación de las plazas públicas en plataformas de solidaridad popular: acopio directo para damnificados por megaincendios y personas en situación de calle.",
+        "protest_context": "Articulación cultural con asambleas territoriales y el estallido social, canalizando la energía del freestyle como voz colectiva de dignidad y resistencia."
+      }
+    }
+  ]
+}
