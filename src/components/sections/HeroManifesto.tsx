@@ -2,6 +2,7 @@ import React from 'react';
 import { Users, Disc3, Globe2, HeartHandshake, Terminal } from 'lucide-react';
 import { MetricCard } from '../ui/MetricCard';
 import { Badge } from '../ui/Badge';
+import { InstagramIcon, YoutubeIcon } from '../ui/SocialIcons';
 import { archiveData } from '../../data/archive-data';
 
 interface HeroManifestoProps {
@@ -29,6 +30,26 @@ export const HeroManifesto: React.FC<HeroManifestoProps> = () => {
           <Badge variant="green" size="sm">
             Documento Desclasificado
           </Badge>
+
+          {/* Social Sources Badges */}
+          <a
+            href="https://www.instagram.com/rap.beauchef/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-neutral-900 border border-pink-500/30 text-pink-400 font-mono text-xs hover:bg-pink-500/10 transition-colors shadow-xs"
+          >
+            <InstagramIcon className="w-3.5 h-3.5" />
+            <span>@rap.beauchef</span>
+          </a>
+          <a
+            href="https://www.youtube.com/@rapbeauchef8447"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-neutral-900 border border-red-500/30 text-red-400 font-mono text-xs hover:bg-red-500/10 transition-colors shadow-xs"
+          >
+            <YoutubeIcon className="w-3.5 h-3.5" />
+            <span>@rapbeauchef8447</span>
+          </a>
         </div>
 
         {/* Title & Core Narrative with Glitch Effect specifically on headings */}

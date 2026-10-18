@@ -1,24 +1,37 @@
 import React, { useState } from 'react';
-import { Server, Users, Radio, ArrowLeft, Cpu, Activity, Maximize2 } from 'lucide-react';
+import { Server, Users, Radio, ArrowLeft, Cpu, Activity, Maximize2, PlayCircle, Clock, Video, Sparkles } from 'lucide-react';
 import { Badge } from '../ui/Badge';
+import { InstagramIcon, YoutubeIcon } from '../ui/SocialIcons';
 import { archiveData } from '../../data/archive-data';
 import { galleryData } from '../../data/gallery-data';
 import { LightboxModal } from '../media/LightboxModal';
+import { YoutubeVideo } from '../../types/archive';
 
 interface DiscordRapBeauchefSectionProps {
+  onSelectVideo?: (video: YoutubeVideo) => void;
   onBackToDashboard?: () => void;
 }
 
 export const DiscordRapBeauchefSection: React.FC<DiscordRapBeauchefSectionProps> = ({
+  onSelectVideo,
   onBackToDashboard,
 }) => {
   const data = archiveData.competitions.find((c) => c.id === 'discord-rap-beauchef')!;
+  const videos = data?.media?.youtube_videos || [];
   
   const discordItems = galleryData.filter(
     (item) => item.competitionId === 'discord-rap-beauchef'
   );
 
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
+
+  const handleOpenVideo = (video: YoutubeVideo) => {
+    if (onSelectVideo) {
+      onSelectVideo(video);
+    } else {
+      window.open(video.url, '_blank');
+    }
+  };
 
   return (
     <section id="discord-rap-beauchef" className="py-12 border-b border-surface-border bg-gradient-to-b from-[#0a171d] via-background to-background">
@@ -44,10 +57,30 @@ export const DiscordRapBeauchefSection: React.FC<DiscordRapBeauchefSectionProps>
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-surface-border/60">
           <div>
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex flex-wrap items-center gap-2 mb-3">
               <Badge variant="green">Infraestructura Digital // 2020–2021</Badge>
               <span className="font-mono text-xs text-neutral-400">Servidor Automatizado & Streaming</span>
+              
+              <a
+                href="https://www.instagram.com/rap.beauchef/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-pink-500/30 text-pink-400 font-mono text-[10px] hover:bg-pink-500/10 transition-colors"
+              >
+                <InstagramIcon className="w-3 h-3" />
+                <span>@rap.beauchef</span>
+              </a>
+              <a
+                href="https://www.youtube.com/@rapbeauchef8447"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neutral-900 border border-red-500/30 text-red-400 font-mono text-[10px] hover:bg-red-500/10 transition-colors"
+              >
+                <YoutubeIcon className="w-3 h-3" />
+                <span>@rapbeauchef8447</span>
+              </a>
             </div>
+
             <h2
               data-text="DISCORD RAP BEAUCHEF"
               className="glitch-text font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center gap-3"
@@ -100,6 +133,77 @@ export const DiscordRapBeauchefSection: React.FC<DiscordRapBeauchefSectionProps>
             <p className="text-[11px] text-neutral-400">Retransmisión en vivo simultánea hacia Twitch y YouTube para miles de espectadores.</p>
           </div>
         </div>
+
+        {/* Streaming Vault: Videos oficiales de las transmisiones */}
+        {videos.length > 0 && (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-2 border-b border-surface-border/60">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Video className="w-4 h-4 text-emerald-400" />
+                  <span className="font-mono text-xs uppercase tracking-wider text-emerald-400 font-bold">
+                    Transmisiones Desclasificadas // YouTube Stream
+                  </span>
+                </div>
+                <h3 className="font-mono text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-emerald-400" />
+                  Archivo de Torneos en Directo
+                </h3>
+              </div>
+              <span className="font-mono text-xs text-neutral-400">
+                LIVESTREAMS & SEMIFINALES RECUPERADAS
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {videos.map((vid) => (
+                <div
+                  key={vid.id}
+                  onClick={() => handleOpenVideo(vid)}
+                  className="group cursor-pointer bg-surface border border-surface-border rounded-2xl overflow-hidden hover:border-emerald-500/60 hover:shadow-glow-green transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div className="relative aspect-video bg-neutral-950 overflow-hidden">
+                    <img
+                      src={`./covers/youtube/${vid.id}.jpg`}
+                      alt={vid.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-emerald-500 text-neutral-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <PlayCircle className="w-8 h-8" />
+                      </div>
+                    </div>
+
+                    {vid.duration && (
+                      <div className="absolute bottom-3 right-3 bg-black/85 backdrop-blur-md px-2.5 py-1 rounded-md text-xs font-mono text-neutral-200 border border-white/10 flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>{vid.duration}</span>
+                      </div>
+                    )}
+
+                    {vid.stage && (
+                      <div className="absolute top-3 left-3">
+                        <span className="font-mono text-xs uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-black/80 text-emerald-400 border border-emerald-500/30">
+                          {vid.stage}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="p-5 space-y-2 flex-1 flex flex-col justify-between border-t border-surface-border/50">
+                    <h4 className="font-mono text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
+                      {vid.title}
+                    </h4>
+                    <div className="flex items-center justify-between text-xs font-mono text-neutral-400 pt-2 border-t border-surface-border/40">
+                      <span className="text-emerald-400 group-hover:underline">Reproducir Transmisión Completa &rarr;</span>
+                      <span>@rapbeauchef8447</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Feature Spotlight: The Launch Poster and Architecture */}
         <div className="bg-surface border border-emerald-500/30 rounded-2xl p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-8">

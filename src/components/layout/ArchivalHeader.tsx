@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { User, Radio, ArrowLeft } from 'lucide-react';
+import { User, ArrowLeft } from 'lucide-react';
+import { InstagramIcon, YoutubeIcon } from '../ui/SocialIcons';
+import { archiveData } from '../../data/archive-data';
 
 interface ArchivalHeaderProps {
   activeMode: 'dossier' | 'executive';
@@ -39,8 +41,8 @@ export const ArchivalHeader: React.FC<ArchivalHeaderProps> = ({
           }}
           className="flex items-center gap-3 text-left group transition-opacity hover:opacity-90"
         >
-          <div className="relative flex items-center justify-center w-8 h-8 rounded bg-crt-amber/10 border border-crt-amber/30 text-crt-amber group-hover:border-crt-amber transition-colors">
-            <Radio className="w-4 h-4 animate-pulse" />
+          <div className="relative flex items-center justify-center w-8 h-8 rounded-lg overflow-hidden border border-crt-amber/40 shadow-xs group-hover:border-crt-amber group-hover:scale-105 transition-all shrink-0">
+            <img src="./app_icon.svg" alt="Dossier Rap Icon" className="w-full h-full object-cover" />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -67,8 +69,31 @@ export const ArchivalHeader: React.FC<ArchivalHeaderProps> = ({
           <span className="text-neutral-300 tracking-widest">{timecode}</span>
         </div>
 
-        {/* Action Controls: Autor Button */}
+        {/* Social channels & Action Controls */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {archiveData.socials && (
+            <div className="flex items-center gap-1.5 border-r border-neutral-800 pr-2 sm:pr-3">
+              <a
+                href={archiveData.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Instagram @rap.beauchef"
+                className="p-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-pink-400 hover:border-pink-500/40 transition-colors"
+              >
+                <InstagramIcon className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={archiveData.socials.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Canal de YouTube @rapbeauchef8447"
+                className="p-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-red-400 hover:border-red-500/40 transition-colors"
+              >
+                <YoutubeIcon className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          )}
+
           {activeMode === 'executive' ? (
             <button
               onClick={() => onChangeMode('dossier')}

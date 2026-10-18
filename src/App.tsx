@@ -101,9 +101,10 @@ export const App: React.FC = () => {
               </div>
             )}
 
-            {/* View 2: RAP BEAUCHEF (Presencial con Fotos) */}
+            {/* View 2: RAP BEAUCHEF (Presencial con Fotos y Videos) */}
             {activeTab === 'rap-beauchef' && (
               <RapBeauchefSection
+                onSelectVideo={handleSelectVideo}
                 onBackToDashboard={handleBackToDashboard}
               />
             )}
@@ -119,6 +120,7 @@ export const App: React.FC = () => {
             {/* View 4: DISCORD RAP BEAUCHEF */}
             {activeTab === 'discord-rap-beauchef' && (
               <DiscordRapBeauchefSection
+                onSelectVideo={handleSelectVideo}
                 onBackToDashboard={handleBackToDashboard}
               />
             )}

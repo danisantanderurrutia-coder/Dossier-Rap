@@ -58,6 +58,10 @@ export interface ArchiveData {
   curator: string;
   roles: string[];
   timeline: string;
+  socials?: {
+    instagram: string;
+    youtube: string;
+  };
   competitions: Competition[];
 }
 

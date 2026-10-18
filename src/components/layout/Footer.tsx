@@ -19,7 +19,27 @@ export const Footer: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-xs font-mono text-neutral-400">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs font-mono text-neutral-400">
+          <a
+            href="https://www.instagram.com/rap.beauchef/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-neutral-900 px-3 py-1.5 rounded border border-neutral-800 hover:border-pink-500/50 hover:text-pink-400 transition-colors"
+          >
+            <span className="text-[11px] font-bold">@rap.beauchef</span>
+            <span className="text-[10px] text-neutral-400 font-mono">(Instagram)</span>
+          </a>
+
+          <a
+            href="https://www.youtube.com/@rapbeauchef8447"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-neutral-900 px-3 py-1.5 rounded border border-neutral-800 hover:border-red-500/50 hover:text-red-400 transition-colors"
+          >
+            <span className="text-[11px] font-bold">@rapbeauchef8447</span>
+            <span className="text-[10px] text-neutral-400 font-mono">(YouTube)</span>
+          </a>
+
           <div className="flex items-center gap-2 bg-neutral-900 px-3 py-1.5 rounded border border-neutral-800">
             <ShieldCheck className="w-3.5 h-3.5 text-crt-green" />
             <span>100% Autogestión Cultural</span>
@@ -27,7 +47,7 @@ export const Footer: React.FC = () => {
 
           <div className="flex items-center gap-2 bg-neutral-900 px-3 py-1.5 rounded border border-neutral-800">
             <Terminal className="w-3.5 h-3.5 text-crt-cyan" />
-            <span>React + TypeScript + Tailwind</span>
+            <span>React + TypeScript</span>
           </div>
         </div>
 
