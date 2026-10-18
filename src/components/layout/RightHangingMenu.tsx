@@ -2,13 +2,6 @@ import React, { useState } from 'react';
 import { 
   ChevronLeft, 
   ChevronRight, 
-  LayoutGrid, 
-  Mic2, 
-  Trophy, 
-  Server, 
-  Skull, 
-  Megaphone, 
-  PenTool
 } from 'lucide-react';
 
 export type SectionTab = 
@@ -31,7 +24,6 @@ interface MenuItem {
   shortLabel: string;
   tagline: string;
   logo: string;
-  fallbackIcon: React.ElementType;
   accentColor: string;
   glowColor: string;
   borderColor: string;
@@ -70,7 +62,6 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       shortLabel: 'Inicio',
       tagline: 'Bóveda General & Métricas',
       logo: './app_icon.svg',
-      fallbackIcon: LayoutGrid,
       accentColor: 'text-neutral-300',
       glowColor: 'shadow-neutral-500/30',
       borderColor: 'border-neutral-500',
@@ -83,7 +74,6 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       shortLabel: 'Beauchef',
       tagline: 'Anfiteatro FCFM & Fotos en Vivo',
       logo: './logos/rap-beauchef.jpg',
-      fallbackIcon: Mic2,
       accentColor: 'text-crt-cyan',
       glowColor: 'shadow-cyan-500/40',
       borderColor: 'border-cyan-500',
@@ -96,7 +86,6 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       shortLabel: 'Dueñas',
       tagline: 'Soberanía Femenina & QUEENA',
       logo: './logos/duenas-de-la-voz.jpg',
-      fallbackIcon: Trophy,
       accentColor: 'text-fuchsia-400',
       glowColor: 'shadow-fuchsia-500/40',
       borderColor: 'border-fuchsia-500',
@@ -109,7 +98,6 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       shortLabel: 'Discord',
       tagline: '+12k Miembros & Baja Latencia',
       logo: './logos/discord-rap-beauchef.jpg',
-      fallbackIcon: Server,
       accentColor: 'text-emerald-400',
       glowColor: 'shadow-emerald-500/40',
       borderColor: 'border-emerald-500',
@@ -122,21 +110,18 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
       shortLabel: 'Cuarentena',
       tagline: 'Muerte Simbólica & 4 Fases',
       logo: './logos/cuarentena-rap.png',
-      fallbackIcon: Skull,
       accentColor: 'text-crt-amber',
       glowColor: 'shadow-amber-500/50',
       borderColor: 'border-amber-400',
       badge: 'Oficial QRTN',
       badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/50',
     },
-
     {
       id: 'rap-libre',
       label: 'Rap Libre',
       shortLabel: 'Rap Libre',
       tagline: 'Plazas Públicas & Resistencia',
       logo: './logos/rap-libre.jpg',
-      fallbackIcon: Megaphone,
       accentColor: 'text-rose-400',
       glowColor: 'shadow-rose-500/40',
       borderColor: 'border-rose-500',
@@ -145,11 +130,10 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
     },
     {
       id: 'las-escritas',
-      label: 'Las Escritas',
+      label: 'Batallas Escritas',
       shortLabel: 'Escritas',
       tagline: 'Duelos Poéticos & Rúbricas',
       logo: './logos/las-escritas.jpg',
-      fallbackIcon: PenTool,
       accentColor: 'text-amber-300',
       glowColor: 'shadow-amber-500/40',
       borderColor: 'border-amber-400',
@@ -218,7 +202,6 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
             {menuItems.map((item) => {
               const isActive = activeTab === item.id;
               const isHovered = hoveredId === item.id;
-              const Icon = item.fallbackIcon;
 
               return (
                 <div key={item.id} className="relative">
@@ -232,7 +215,7 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                         : 'hover:bg-neutral-900/90 border-2 border-transparent hover:border-neutral-800'
                     }`}
                   >
-                    {/* Logo Emblem Thumbnail (Enlarged) */}
+                    {/* Logo Emblem Thumbnail (Enlarged & Clean - Sin Iconos Superpuestos) */}
                     <div
                       className={`relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden flex-shrink-0 border-2 bg-neutral-900 flex items-center justify-center transition-all ${
                         isActive
@@ -240,15 +223,40 @@ export const RightHangingMenu: React.FC<RightHangingMenuProps> = ({
                           : 'border-neutral-800 group-hover:border-neutral-600'
                       }`}
                     >
-                      <img
-                        src={item.logo}
-                        alt={item.shortLabel}
-                        onError={(e) => {
-                          (e.target as HTMLElement).style.display = 'none';
-                        }}
-                        className="w-full h-full object-cover transition-transform group-hover:scale-110"
-                      />
-                      <Icon className={`w-8 h-8 absolute pointer-events-none opacity-85 ${item.accentColor}`} />
+                      {item.id === 'rap-libre' ? (
+                        /* Logo tipográfico exclusivo para Rap Libre */
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#2b080f] via-neutral-950 to-black p-1 text-center select-none">
+                          <span className="font-mono text-[9px] tracking-[0.25em] text-rose-500 uppercase font-black leading-none">
+                            RAP
+                          </span>
+                          <span className="font-mono text-[14px] sm:text-[15px] font-black tracking-tight text-white uppercase leading-none drop-shadow-[0_2px_8px_rgba(244,63,94,0.7)] group-hover:scale-105 transition-transform my-0.5">
+                            LIBRE
+                          </span>
+                          <span className="font-mono text-[7px] tracking-widest text-rose-300/80 uppercase font-bold leading-none">
+                            PLAZA
+                          </span>
+                        </div>
+                      ) : item.id === 'las-escritas' ? (
+                        /* Logo tipográfico exclusivo para Batallas Escritas */
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#271404] via-neutral-950 to-black p-1 text-center select-none">
+                          <span className="font-mono text-[7.5px] tracking-[0.2em] text-amber-400 uppercase font-black leading-none">
+                            BATALLAS
+                          </span>
+                          <span className="font-serif italic font-black text-[12px] sm:text-[13px] tracking-wide text-amber-200 uppercase leading-none drop-shadow-[0_2px_8px_rgba(251,191,36,0.6)] group-hover:scale-105 transition-transform my-0.5">
+                            ESCRITAS
+                          </span>
+                          <span className="font-mono text-[7px] tracking-widest text-neutral-400 uppercase font-bold leading-none">
+                            LÍRICA
+                          </span>
+                        </div>
+                      ) : (
+                        /* Imagen de logo original limpia, sin dibujos superpuestos */
+                        <img
+                          src={item.logo}
+                          alt={item.shortLabel}
+                          className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                        />
+                      )}
                       
                       {/* Active indicator dot */}
                       {isActive && (

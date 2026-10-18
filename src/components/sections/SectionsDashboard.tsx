@@ -1,13 +1,5 @@
 import React from 'react';
-import { 
-  Mic2, 
-  Trophy, 
-  Server, 
-  Skull, 
-  Megaphone, 
-  PenTool, 
-  ArrowUpRight 
-} from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { SectionTab } from '../layout/RightHangingMenu';
 
 interface SectionsDashboardProps {
@@ -21,7 +13,6 @@ interface SectionCardItem {
   type: string;
   description: string;
   logo: string;
-  fallbackIcon: React.ElementType;
   accentColor: string;
   borderColor: string;
   hoverBorder: string;
@@ -40,7 +31,6 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       type: 'Presencial / Anfiteatro FCFM',
       description: 'Batallas en vivo en anfiteatro universitario, cyphers en círculo, breakers y jurados bajo enredaderas históricas.',
       logo: './logos/rap-beauchef.jpg',
-      fallbackIcon: Mic2,
       accentColor: 'text-crt-cyan',
       borderColor: 'border-cyan-500/30',
       hoverBorder: 'hover:border-cyan-400',
@@ -56,7 +46,6 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       type: 'Soberanía Lírica Femenina',
       description: 'Primer encuentro y certamen feminista universitario con conversatorios temáticos, sororidad lírica y cyphers.',
       logo: './logos/duenas-de-la-voz.jpg',
-      fallbackIcon: Trophy,
       accentColor: 'text-fuchsia-400',
       borderColor: 'border-fuchsia-500/30',
       hoverBorder: 'hover:border-fuchsia-400',
@@ -72,7 +61,6 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       type: 'Infraestructura Digital',
       description: 'Comunidad masiva con salas de audio optimizadas para baja latencia, moderación automatizada y circuito 24/7.',
       logo: './logos/discord-rap-beauchef.jpg',
-      fallbackIcon: Server,
       accentColor: 'text-emerald-400',
       borderColor: 'border-emerald-500/30',
       hoverBorder: 'hover:border-emerald-400',
@@ -88,8 +76,6 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       type: 'Ritual Pandémico (4 Fases)',
       description: 'La liga del confinamiento estructurada como un rito: de la muerte simbólica (Fase de Tumbas) a la liberación lírica.',
       logo: './logos/cuarentena-rap.png',
-
-      fallbackIcon: Skull,
       accentColor: 'text-crt-amber',
       borderColor: 'border-amber-500/30',
       hoverBorder: 'hover:border-amber-400',
@@ -105,7 +91,6 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       type: 'Espacio Público & Solidaridad',
       description: 'Reapropiación de plazas públicas urbanas, autogestión territorial y acopio directo de víveres durante crisis.',
       logo: './logos/rap-libre.jpg',
-      fallbackIcon: Megaphone,
       accentColor: 'text-rose-400',
       borderColor: 'border-rose-500/30',
       hoverBorder: 'hover:border-rose-400',
@@ -116,12 +101,11 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
     },
     {
       id: 'las-escritas',
-      title: 'Las Escritas',
+      title: 'Batallas Escritas',
       period: '2020–2021',
       type: 'Duelos Poéticos & Rúbricas',
       description: 'Duelos líricos a capella preparados sin improvisación, evaluados con rúbricas técnicas y de métrica poética.',
       logo: './logos/las-escritas.jpg',
-      fallbackIcon: PenTool,
       accentColor: 'text-amber-300',
       borderColor: 'border-amber-400/30',
       hoverBorder: 'hover:border-amber-300',
@@ -152,8 +136,6 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
       {/* Grid of 6 Section Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {sections.map((section) => {
-          const Icon = section.fallbackIcon;
-
           return (
             <div
               key={section.id}
@@ -164,15 +146,40 @@ export const SectionsDashboard: React.FC<SectionsDashboardProps> = ({ onSelectTa
                 {/* Top Row: Logo + Badge + Year */}
                 <div className="flex items-start justify-between gap-3 mb-4">
                   <div className="relative w-14 h-14 rounded-xl overflow-hidden border border-neutral-700 bg-neutral-900 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-md">
-                    <img
-                      src={section.logo}
-                      alt={section.title}
-                      onError={(e) => {
-                        (e.target as HTMLElement).style.display = 'none';
-                      }}
-                      className="w-full h-full object-cover"
-                    />
-                    <Icon className={`w-7 h-7 absolute pointer-events-none opacity-80 ${section.accentColor}`} />
+                    {section.id === 'rap-libre' ? (
+                      /* Logo tipográfico exclusivo para Rap Libre */
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#2b080f] via-neutral-950 to-black p-1 text-center select-none">
+                        <span className="font-mono text-[8px] tracking-[0.25em] text-rose-500 uppercase font-black leading-none">
+                          RAP
+                        </span>
+                        <span className="font-mono text-[13px] font-black tracking-tight text-white uppercase leading-none drop-shadow-[0_2px_8px_rgba(244,63,94,0.7)] group-hover:scale-105 transition-transform my-0.5">
+                          LIBRE
+                        </span>
+                        <span className="font-mono text-[6.5px] tracking-widest text-rose-300/80 uppercase font-bold leading-none">
+                          PLAZA
+                        </span>
+                      </div>
+                    ) : section.id === 'las-escritas' ? (
+                      /* Logo tipográfico exclusivo para Batallas Escritas */
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#271404] via-neutral-950 to-black p-1 text-center select-none">
+                        <span className="font-mono text-[7px] tracking-[0.2em] text-amber-400 uppercase font-black leading-none">
+                          BATALLAS
+                        </span>
+                        <span className="font-serif italic font-black text-[11px] tracking-wide text-amber-200 uppercase leading-none drop-shadow-[0_2px_8px_rgba(251,191,36,0.6)] group-hover:scale-105 transition-transform my-0.5">
+                          ESCRITAS
+                        </span>
+                        <span className="font-mono text-[6.5px] tracking-widest text-neutral-400 uppercase font-bold leading-none">
+                          LÍRICA
+                        </span>
+                      </div>
+                    ) : (
+                      /* Imagen de logo original limpia, sin dibujos superpuestos */
+                      <img
+                        src={section.logo}
+                        alt={section.title}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
 
                   <div className="flex flex-col items-end gap-1.5">
