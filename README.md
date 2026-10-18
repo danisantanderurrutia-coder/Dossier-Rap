@@ -1,6 +1,7 @@
 # Dossier Inmersivo: Competencias de Rap & Archivo Hip-Hop
 **Archivo Cultural, Dirección de Arte & Producción Ejecutiva (2019 – 2021)**
-**Curador / Director Creativo:** Daniel Santander
+**Curador / Director Creativo:** Daniel S. Santander Urrutia
+
 
 ---
 

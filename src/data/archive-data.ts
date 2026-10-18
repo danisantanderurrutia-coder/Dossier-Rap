@@ -2,7 +2,8 @@ import { ArchiveData } from '../types/archive';
 
 export const archiveData: ArchiveData = {
   project: "Dossier Inmersivo: Competencias de Rap & Archivo Hip-Hop",
-  curator: "Daniel Santander",
+  curator: "Daniel S. Santander Urrutia",
+
   roles: [
     "Director Creativo",
     "Productor Ejecutivo",

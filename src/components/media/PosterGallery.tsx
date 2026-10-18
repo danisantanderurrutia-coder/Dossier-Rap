@@ -225,7 +225,8 @@ export const PosterGallery: React.FC<PosterGalleryProps> = ({
             {/* Bottom Technical Deck */}
             <div className="pt-6 border-t border-surface-border">
               <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400">
-                <span>CURADOR: DANIEL SANTANDER</span>
+                <span>CURADOR: DANIEL S. SANTANDER URRUTIA</span>
+
                 <span>ORIGEN: ARCHIVO OFICIAL INSTAGRAM</span>
               </div>
             </div>

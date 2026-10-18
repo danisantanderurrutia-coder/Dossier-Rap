@@ -102,14 +102,15 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
             </div>
 
             <p className="text-xs text-neutral-300 leading-relaxed font-sans border-t border-surface-border pt-4">
-              {poster.desc || 'Pieza gráfica original de difusión, convocatoria y registro visual perteneciente al archivo de competencias dirigidas por Daniel Santander.'}
+              {poster.desc || 'Pieza gráfica original de difusión, convocatoria y registro visual perteneciente al archivo de competencias dirigidas por Daniel S. Santander Urrutia.'}
             </p>
           </div>
 
           <div className="pt-4 border-t border-surface-border space-y-2 text-[11px] font-mono text-neutral-400">
             <div>FORMATO: JPG ORIGINAL // RESOLUCIÓN ARCHIVO</div>
-            <div>CURADURÍA: DANIEL SANTANDER</div>
+            <div>CURADURÍA: DANIEL S. SANTANDER URRUTIA</div>
           </div>
+
 
         </div>
 
